@@ -1,0 +1,4 @@
+{
+    "jwtSecret": "gittinder",
+    "mongoURI": "mongodb+srv://Sarthak:sarthak123@cluster0-fx4ys.mongodb.net/test?retryWrites=true&w=majority"
+}
