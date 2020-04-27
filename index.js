@@ -5,7 +5,7 @@ const connectDB = require("./config/db");
 connectDB();
 
 //adding middleware
-app.use(express.json({ extended: false }));
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("started");
