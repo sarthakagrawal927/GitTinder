@@ -1,6 +1,6 @@
 {
     "jwtSecret": "gittinder",
-    "githubClientId": "19bcb3a21c6ff14f49f3",
-    "githubSecret": "8462449a2378b31b7885d9fa190954f1303074f6",
+    "githubToken": "19bcb3a21c6ff14f49f3",
+    "githubClientSecret": "e348e5834711180576b28b05cbfdc7c2e710fccd",
     "mongoURI": "mongodb+srv://Sarthak:sarthak123@cluster0-fx4ys.mongodb.net/test?retryWrites=true&w=majority"
 }

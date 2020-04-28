@@ -6,6 +6,8 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const normalize = require("normalize-url");
+
 // route POST api/users
 // to register users
 router.post(
@@ -29,14 +31,18 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (user) {
-        res.status(400).json({ errors: [{ msg: "User already exists" }] });
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "User already exists" }] });
       }
 
-      const avatar = gravatar.url(email, {
-        s: "200",
-        r: "pg",
-        d: "mm", //setting default image
-      });
+      const avatar = normalize(
+        gravatar.url(email, {
+          s: "200",
+          r: "pg",
+          d: "mm", //setting default image
+        }),
+      );
       user = new User({ name, email, avatar, password });
       //Encrypt password
       const salt = await bcrypt.genSalt(10); //more number more secure
@@ -44,7 +50,7 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
-      res.send("User registered");
+      //res.send("User registered");
 
       const payload = {
         user: {
@@ -58,7 +64,7 @@ router.post(
         { expiresIn: 3600000 },
         (err, token) => {
           if (err) throw err;
-          console.log(token);
+          //console.log(token);
           res.json({ token });
         },
       );

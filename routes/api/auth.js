@@ -8,11 +8,11 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 
 // route GET api/auth
-// to authentic user and get token
+// get user by token
 router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
-    res.send(user);
+    res.json(user);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -20,6 +20,7 @@ router.get("/", auth, async (req, res) => {
 });
 
 // route post to api/auth
+//authenticate user and token
 router.post(
   "/",
   [
@@ -37,13 +38,17 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "Invalid Credentials" }] });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "Invalid Credentials" }] });
       }
 
       const payload = {
