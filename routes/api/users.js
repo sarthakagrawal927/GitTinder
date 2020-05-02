@@ -42,6 +42,7 @@ router.post(
           r: "pg",
           d: "mm", //setting default image
         }),
+        { forceHttps: true },
       );
       user = new User({ name, email, avatar, password });
       //Encrypt password
@@ -50,7 +51,6 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
-      //res.send("User registered");
 
       const payload = {
         user: {
@@ -64,7 +64,6 @@ router.post(
         { expiresIn: 3600000 },
         (err, token) => {
           if (err) throw err;
-          //console.log(token);
           res.json({ token });
         },
       );

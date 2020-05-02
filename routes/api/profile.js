@@ -4,6 +4,8 @@ const config = require("config");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator");
+const mongoose = require("mongoose");
+
 // bring in normalize to give us a proper url, regardless of what user entered
 const normalize = require("normalize-url");
 
@@ -117,10 +119,13 @@ router.get("/", async (req, res) => {
 // @route    GET api/profile/user/:user_id
 // @desc     Get profile by user ID
 // @access   Public
-router.get("/user/:user_id", async (req, res) => {
+router.get("/user/:user_id", async ({ params: { user_id } }, res) => {
+  if (!mongoose.Types.ObjectId.isValid(user_id)) {
+    return res.status(400).json({ msg: "Profile not found" });
+  }
   try {
     const profile = await Profile.findOne({
-      user: req.params.user_id,
+      user: user_id,
     }).populate("user", ["name", "avatar"]);
 
     if (!profile) return res.status(400).json({ msg: "Profile not found" });
@@ -128,9 +133,6 @@ router.get("/user/:user_id", async (req, res) => {
     res.json(profile);
   } catch (err) {
     console.error(err.message);
-    if (err.kind == "ObjectId") {
-      return res.status(400).json({ msg: "Profile not found" });
-    }
     res.status(500).send("Server Error");
   }
 });
