@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
+import PropTypes from "prop-types";
 
-const Login = () => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -12,9 +15,14 @@ const Login = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    login(email, password);
   };
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <Fragment>
@@ -22,14 +30,14 @@ const Login = () => {
       <p className='lead'>
         <i className='fas fa-user'></i> Sign in Your Account
       </p>
-      <form className='form' onSubmit={(e) => onSubmit(e)}>
+      <form className='form' onSubmit={onSubmit}>
         <div className='form-group'>
           <input
             type='email'
             placeholder='Email Address'
             name='email'
             value={email}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             required
           />
         </div>
@@ -41,7 +49,7 @@ const Login = () => {
             minLength='8'
             value={password}
             required
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Login' />
@@ -53,4 +61,13 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propType = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);
