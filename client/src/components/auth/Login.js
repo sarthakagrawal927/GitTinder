@@ -1,13 +1,13 @@
-import React, { Fragment, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { login } from "../../actions/auth";
-import PropTypes from "prop-types";
+import React, { Fragment, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: ''
   });
 
   const { email, password } = formData;
@@ -21,53 +21,52 @@ const Login = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign In</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i> Sign in Your Account
+      <h1 className="large text-primary">Sign In</h1>
+      <p className="lead">
+        <i className="fas fa-user" /> Sign Into Your Account
       </p>
-      <form className='form' onSubmit={onSubmit}>
-        <div className='form-group'>
+      <form className="form" onSubmit={onSubmit}>
+        <div className="form-group">
           <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
+            type="email"
+            placeholder="Email Address"
+            name="email"
             value={email}
             onChange={onChange}
             required
           />
         </div>
-        <div className='form-group'>
+        <div className="form-group">
           <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            minLength='8'
+            type="password"
+            placeholder="Password"
+            name="password"
             value={password}
-            required
             onChange={onChange}
+            minLength="6"
           />
         </div>
-        <input type='submit' className='btn btn-primary' value='Login' />
+        <input type="submit" className="btn btn-primary" value="Login" />
       </form>
-      <p className='my-1'>
-        Don't have a account? <Link to='/register'>Register</Link>
+      <p className="my-1">
+        Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
     </Fragment>
   );
 };
 
-Login.propType = {
+Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { login })(Login);
