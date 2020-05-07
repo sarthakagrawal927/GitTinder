@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const ProfileTop = ({
   profile: {
@@ -8,8 +8,8 @@ const ProfileTop = ({
     location,
     website,
     social,
-    user: { name, avatar }
-  }
+    user: { name, avatar },
+  },
 }) => {
   return (
     <div className='profile-top bg-primary p-2'>
@@ -50,13 +50,18 @@ const ProfileTop = ({
             <i className='fab fa-instagram fa-2x' />
           </a>
         )}
+        {social && social.github && (
+          <a href={social.github} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-github fa-2x' />
+          </a>
+        )}
       </div>
     </div>
   );
 };
 
 ProfileTop.propTypes = {
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 export default ProfileTop;

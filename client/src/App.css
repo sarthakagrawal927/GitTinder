@@ -328,6 +328,10 @@ button {
     color: #0077b5;
 }
 
+.form .social-input i.fa-github {
+    color: black;
+}
+
 .table th,
 .table td {
     padding: 1rem;
