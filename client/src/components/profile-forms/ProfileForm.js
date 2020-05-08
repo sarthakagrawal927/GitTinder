@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
 
 const initialState = {
+  gender: "",
   company: "",
   website: "",
   location: "",
@@ -47,6 +48,7 @@ const ProfileForm = ({
   }, [loading, getCurrentProfile, profile]);
 
   const {
+    gender,
     company,
     website,
     location,
@@ -78,6 +80,16 @@ const ProfileForm = ({
       </p>
       <small>* = required field</small>
       <form className='form' onSubmit={onSubmit}>
+        <div className='form-group'>
+          <select name='gender' value={gender} onChange={onChange}>
+            <option>* Gender</option>
+            <option value='Male'>Male</option>
+            <option value='Female'>Female</option>
+          </select>
+          <small className='form-text'>
+            Give us an idea of where you are at in your career
+          </small>
+        </div>
         <div className='form-group'>
           <select name='status' value={status} onChange={onChange}>
             <option>* Select Professional Status</option>

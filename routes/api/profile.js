@@ -50,6 +50,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const {
+      gender,
       company,
       location,
       website,
@@ -67,6 +68,7 @@ router.post(
 
     const profileFields = {
       user: req.user.id,
+      gender,
       company,
       location,
       website: website === "" ? "" : normalize(website, { forceHttps: true }),

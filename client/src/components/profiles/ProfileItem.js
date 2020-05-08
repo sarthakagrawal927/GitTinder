@@ -1,19 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import male_image from "../../img/male.png";
+import female_image from "../../img/female.png";
 
 const ProfileItem = ({
   profile: {
-    user: { _id, name, avatar },
+    user: { _id, name },
+    gender,
     status,
     company,
     location,
-    skills
-  }
+    skills,
+  },
 }) => {
   return (
     <div className='profile bg-light'>
-      <img src={avatar} alt='' className='round-img' />
+      <img
+        src={gender === "Male" ? male_image : female_image}
+        alt=''
+        className='round-img'
+      />
       <div>
         <h2>{name}</h2>
         <p>
@@ -36,7 +43,7 @@ const ProfileItem = ({
 };
 
 ProfileItem.propTypes = {
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 export default ProfileItem;
