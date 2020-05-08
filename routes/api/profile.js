@@ -19,7 +19,7 @@ router.get("/me", auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.user.id,
-    }).populate("user", ["name", "avatar"]);
+    }).populate("user", ["name"]);
 
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
@@ -116,7 +116,7 @@ router.post(
 // @access   Public
 router.get("/", async (req, res) => {
   try {
-    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+    const profiles = await Profile.find().populate("user", ["name"]);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -134,7 +134,7 @@ router.get(
     try {
       const profile = await Profile.findOne({
         user: user_id,
-      }).populate("user", ["name", "avatar"]);
+      }).populate("user", ["name"]);
 
       if (!profile) return res.status(400).json({ msg: "Profile not found" });
 
@@ -324,7 +324,7 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
 router.get("/github/:username", async (req, res) => {
   try {
     const uri = encodeURI(
-      `https://api.github.com/users/${req.params.username}/repos?per_page=8&sort=created:asc`,
+      `https://api.github.com/users/${req.params.username}/repos?per_page=12&sort=created:asc`,
     );
     const headers = {
       "user-agent": "node.js",
