@@ -22,11 +22,11 @@ const PostForm = ({ addPost }) => {
           name='text'
           cols='30'
           rows='5'
-          placeholder='Create a post'
+          placeholder='Share an idea !'
           value={text}
           onChange={(e) => setText(e.target.value)}
           required
-          wrap='hard'
+          wrap='soft'
         />
         <input type='submit' className='btn btn-dark my-1' value='Submit' />
       </form>
