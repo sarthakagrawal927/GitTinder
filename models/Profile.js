@@ -6,7 +6,7 @@ const ProfileSchema = new mongoose.Schema({
     ref: "user",
   },
   displayPictureURL: {
-    type: URL,
+    type: String,
   },
   gender: {
     type: String,
