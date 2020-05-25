@@ -1,8 +1,0 @@
-{
-    "jwtSecret": "gittinder",
-    "githubToken": "a306cfe0657bddf7c0a5ca5c2b40578136fb1d89",
-    "mongoURI": "mongodb+srv://Sarthak:sarthak123@cluster0-fx4ys.mongodb.net/test?retryWrites=true&w=majority",
-    "accessKeyId": "AKIAJ2VCRKSGM4IAPWSQ",
-    "secretAccessKey": "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",
-    "Bucket": "significant"
-}

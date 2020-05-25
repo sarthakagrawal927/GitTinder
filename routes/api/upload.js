@@ -6,10 +6,10 @@ const path = require("path");
 
 const router = express.Router();
 
-const config = require("config");
-const AWS_accessKeyId = config.get("accessKeyId");
-const AWS_secretAccessKey = config.get("secretAccessKey");
-const AWS_Bucket = config.get("Bucket");
+const keys = require("../../config/keys");
+const AWS_accessKeyId = keys.accessKeyId;
+const AWS_secretAccessKey = keys.secretAccessKey;
+const AWS_Bucket = keys.Bucket;
 
 /*PROFILE IMAGE STORING STARTS*/
 const s3 = new aws.S3({
@@ -67,7 +67,7 @@ function checkFileType(file, cb) {
  */
 router.post("/profile-img-upload", (req, res) => {
   profileImgUpload(req, res, (error) => {
-    console.log("requestOkokok", req.file.location);
+    console.log("requestOkokok", req.file);
 
     if (error) {
       console.log("errors", error);
