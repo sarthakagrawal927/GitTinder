@@ -14,6 +14,7 @@ import Post from "../post/Post";
 import NotFound from "../layout/NotFound";
 import PrivateRoute from "../routing/PrivateRoute";
 import AboutUs from "../layout/Aboutus";
+import Upload from "../Dp";
 
 const Routes = (props) => {
   return (
@@ -24,6 +25,7 @@ const Routes = (props) => {
         <Route exact path='/login' component={Login} />
         <Route exact path='/profiles' component={Profiles} />
         <Route exact path='/aboutus' component={AboutUs} />
+        <Route exact path='/upload' component={Upload} />
         <Route exact path='/profile/:id' component={Profile} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/create-profile' component={ProfileForm} />
