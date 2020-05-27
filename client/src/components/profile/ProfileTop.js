@@ -4,6 +4,7 @@ import male_image from "../../img/male.png";
 import female_image from "../../img/female.png";
 const ProfileTop = ({
   profile: {
+    displayPictureURL,
     gender,
     status,
     company,
@@ -17,7 +18,9 @@ const ProfileTop = ({
     <div className='profile-top bg-primary p-2'>
       <img
         className='round-img'
-        src={gender === "Male" ? male_image : female_image}
+        src={
+          displayPictureURL || (gender === "Male" ? male_image : female_image)
+        }
         alt=''
       />
       <h1 className='large'>{name}</h1>

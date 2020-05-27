@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import $ from "jquery";
+// import Alert from "./layout/Alert";
 
 class Dp extends Component {
   constructor(props) {
@@ -80,22 +81,15 @@ class Dp extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className='container'>
-        {/* For Alert box*/}
-        <div id='oc-alert-container'></div>
-        {/*Upload Your Profile Photo*/}
-        <div className='card border-light mb-3 mt-5'>
-          <div className='card-body'>
-            <p className='card-text'>Please upload an image for your profile</p>
-            <input type='file' onChange={this.singleFileChangedHandler} />
-            <div className='mt-5'>
-              <button
-                className='btn btn-info'
-                onClick={this.singleFileUploadHandler}>
-                Upload!
-              </button>
-            </div>
-          </div>
+      <div className='card-body'>
+        <p className='card-text'>Please upload an image for your profile</p>
+        <input type='file' onChange={this.singleFileChangedHandler} />
+        <div className='mt-5'>
+          <button
+            className='btn btn-info'
+            onClick={this.singleFileUploadHandler}>
+            Upload!
+          </button>
         </div>
       </div>
     );

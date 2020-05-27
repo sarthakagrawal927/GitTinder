@@ -3,15 +3,16 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
+import Dp from "../Dp";
 
 const initialState = {
+  displayPictureURL: "",
   gender: "",
   company: "",
   website: "",
   location: "",
   status: "",
   skills: "",
-  githubusername: "",
   bio: "",
   twitter: "",
   facebook: "",
@@ -48,13 +49,13 @@ const ProfileForm = ({
   }, [loading, getCurrentProfile, profile]);
 
   const {
+    displayPictureURL,
     gender,
     company,
     website,
     location,
     status,
     skills,
-    githubusername,
     bio,
     twitter,
     facebook,
@@ -82,7 +83,7 @@ const ProfileForm = ({
       <form className='form' onSubmit={onSubmit}>
         <div className='form-group'>
           <select name='gender' value={gender} onChange={onChange}>
-            <option>* Gender</option>
+            {/* <option>* Gender</option> */}
             <option value='Male'>Male</option>
             <option value='Female'>Female</option>
           </select>
@@ -92,7 +93,7 @@ const ProfileForm = ({
         </div>
         <div className='form-group'>
           <select name='status' value={status} onChange={onChange}>
-            <option>* Select Professional Status</option>
+            {/* <option>* Select Professional Status</option> */}
             <option value='Developer'>Developer</option>
             <option value='Junior Developer'>Junior Developer</option>
             <option value='Senior Developer'>Senior Developer</option>
@@ -106,6 +107,7 @@ const ProfileForm = ({
             Give us an idea of where you are at in your career
           </small>
         </div>
+
         <div className='form-group'>
           <input
             type='text'
@@ -153,18 +155,7 @@ const ProfileForm = ({
             HTML,CSS,JavaScript,dancing,designing)
           </small>
         </div>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Github Username'
-            name='githubusername'
-            value={githubusername}
-            onChange={onChange}
-          />
-          <small className='form-text'>
-            If you want your latest repos displayed here, include your username
-          </small>
-        </div>
+
         <div className='form-group'>
           <textarea
             placeholder='A short bio of yourself'
@@ -173,6 +164,18 @@ const ProfileForm = ({
             onChange={onChange}
           />
           <small className='form-text'>Tell us a little about yourself</small>
+        </div>
+
+        <div className='form-group'>
+          <textarea
+            placeholder='Image URL'
+            name='displayPictureURL'
+            value={displayPictureURL}
+            onChange={onChange}
+          />
+          <small className='form-text'>
+            Very temporary solution to a very big question
+          </small>
         </div>
 
         <div className='my-2'>
@@ -184,6 +187,8 @@ const ProfileForm = ({
           </button>
           <span>Optional</span>
         </div>
+
+        <Dp />
 
         {displaySocialInputs && (
           <Fragment>
@@ -241,11 +246,12 @@ const ProfileForm = ({
                 onChange={onChange}
               />
             </div>
+
             <div className='form-group social-input'>
               <i className='fab fa-github fa-2x' />
               <input
                 type='text'
-                placeholder='GitHub URL'
+                placeholder='Instagram URL'
                 name='github'
                 value={github}
                 onChange={onChange}

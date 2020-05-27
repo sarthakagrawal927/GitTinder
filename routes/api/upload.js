@@ -11,6 +11,12 @@ const AWS_accessKeyId = keys.accessKeyId;
 const AWS_secretAccessKey = keys.secretAccessKey;
 const AWS_Bucket = keys.Bucket;
 
+const auth = require("../../middleware/auth");
+const checkObjectId = require("../../middleware/checkObjectId");
+
+const Profile = require("../../models/Profile");
+const User = require("../../models/User");
+
 /*PROFILE IMAGE STORING STARTS*/
 const s3 = new aws.S3({
   accessKeyId: AWS_accessKeyId,
@@ -67,7 +73,7 @@ function checkFileType(file, cb) {
  */
 router.post("/profile-img-upload", (req, res) => {
   profileImgUpload(req, res, (error) => {
-    console.log("requestOkokok", req.file);
+    console.log("Image uploaded", req.file);
 
     if (error) {
       console.log("errors", error);
@@ -80,11 +86,10 @@ router.post("/profile-img-upload", (req, res) => {
       // Success
       //const imageName = req.file.key;
       const imageLocation = req.file.location;
-      // Save the file name into database into profile model
-      res.json({
-        //image: imageName,
-        location: imageLocation,
-      });
+      const profileFields = {
+        // user: req.user_id,
+        //displayPictureURL,
+      };
     }
   });
 });
@@ -119,7 +124,7 @@ const uploadsBusinessGallery = multer({
  * @desc Upload business Gallery images
  * @access public
  */
-router.post("/multiple-file-upload", (req, res) => {
+router.post("/multiple-file-upload", auth, (req, res) => {
   uploadsBusinessGallery(req, res, (error) => {
     console.log("files", req.files);
     if (error) {

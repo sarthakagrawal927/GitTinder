@@ -12,6 +12,18 @@ const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 const Post = require("../../models/Post");
 
+const aws = require("aws-sdk");
+const multerS3 = require("multer-s3");
+const multer = require("multer");
+const path = require("path");
+
+/*PROFILE IMAGE STORING STARTS*/
+const s3 = new aws.S3({
+  accessKeyId: keys.accessKeyId,
+  secretAccessKey: keys.secretAccessKey,
+  Bucket: keys.Bucket,
+});
+
 // @route    GET api/profile/me
 // @desc     Get current users profile
 // @access   Private
@@ -51,13 +63,13 @@ router.post(
     }
     const {
       gender,
+      displayPictureURL,
       company,
       location,
       website,
       bio,
       skills,
       status,
-      githubusername,
       youtube,
       twitter,
       instagram,
@@ -68,6 +80,7 @@ router.post(
 
     const profileFields = {
       user: req.user.id,
+      displayPictureURL,
       gender,
       company,
       location,
@@ -77,7 +90,6 @@ router.post(
         ? skills
         : skills.split(",").map((skill) => " " + skill.trim()),
       status,
-      githubusername,
     };
 
     // Build social object and add to profileFields
@@ -318,25 +330,70 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
   }
 });
 
-// @route    GET api/profile/github/:username
-// @desc     Get user repos from Github
-// @access   Public
-router.get("/github/:username", async (req, res) => {
-  try {
-    const uri = encodeURI(
-      `https://api.github.com/users/${req.params.username}/repos?per_page=4&sort=created:asc`,
-    );
-    const headers = {
-      "user-agent": "node.js",
-      Authorization: `token ${keys.githubToken}`,
-    };
+const profileImgUpload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: keys.Bucket,
+    acl: "public-read",
+    key: function (req, file, cb) {
+      cb(
+        null,
+        path.basename(file.originalname, path.extname(file.originalname)) +
+          "-" +
+          Date.now() +
+          path.extname(file.originalname),
+      );
+    },
+  }),
+  limits: { fileSize: 2000000 }, // In bytes: 2000000 bytes = 2 MB
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
+}).single("profileImage");
 
-    const gitHubResponse = await axios.get(uri, { headers });
-    return res.json(gitHubResponse.data);
-  } catch (err) {
-    console.error(err.message);
-    return res.status(404).json({ msg: "No Github profile found" });
+/* Check File Type*/
+function checkFileType(file, cb) {
+  const filetypes = /jpeg|jpg|png|gif/;
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = filetypes.test(file.mimetype);
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb("Error: Images Only!");
   }
+}
+
+/**
+ * @route POST /api/upload/business-img-upload
+ * @desc Upload post image
+ * @access public
+ */
+router.put("/profile-img-upload", auth, (req, res) => {
+  profileImgUpload(req, res, async (error) => {
+    console.log("Image uploaded", req.file.location);
+
+    if (error) {
+      console.log("errors", error);
+      res.json({ error: error });
+    } else if (req.file === undefined) {
+      // If File not found
+      console.log("Error: No File Selected!");
+      res.json("Error: No File Selected");
+    }
+    //success
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+
+      profile.displayPictureURL = req.file.location;
+
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  });
 });
 
 module.exports = router;
