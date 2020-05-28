@@ -8,7 +8,6 @@ class Dp extends Component {
     super(props);
     this.state = {
       selectedFile: null,
-      selectedFiles: null,
     };
   }
 
@@ -27,7 +26,7 @@ class Dp extends Component {
         this.state.selectedFile.name,
       );
       axios
-        .post("/api/upload/profile-img-upload", data, {
+        .post("/api/profile/upload/profile-img-upload", data, {
           headers: {
             accept: "application/json",
             "Accept-Language": "en-US,en;q=0.8",
@@ -84,13 +83,13 @@ class Dp extends Component {
       <div className='card-body'>
         <p className='card-text'>Please upload an image for your profile</p>
         <input type='file' onChange={this.singleFileChangedHandler} />
-        <div className='mt-5'>
+        {this.state.selectedFile && (
           <button
             className='btn btn-info'
             onClick={this.singleFileUploadHandler}>
             Upload!
           </button>
-        </div>
+        )}
       </div>
     );
   }

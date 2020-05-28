@@ -6,7 +6,6 @@ class PostImages extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFile: null,
       selectedFiles: null,
     };
   }
@@ -83,28 +82,20 @@ class PostImages extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className='container'>
-        {/* For Alert box*/}
-        <div id='oc-alert-container'></div>
-        {/* Multiple File Upload */}
-        <div
-          className='card border-light mb-3'
-          style={{ boxShadow: "0 5px 10px 2px rgba(195,192,192,.5)" }}>
-          <div className='card-body'>
-            <p className='card-text'>Please upload the Images for your post</p>
-            <input
-              type='file'
-              multiple
-              onChange={this.multipleFileChangedHandler}
-            />
-            <div className='mt-5'>
-              <button
-                className='btn btn-info'
-                onClick={this.multipleFileUploadHandler}>
-                Upload!
-              </button>
-            </div>
-          </div>
+      <div>
+        <input
+          type='file'
+          multiple
+          onChange={this.multipleFileChangedHandler}
+        />
+        <div className='mt-5'>
+          {this.state.selectedFiles && (
+            <button
+              className='btn btn-info'
+              onClick={this.multipleFileUploadHandler}>
+              Upload!
+            </button>
+          )}
         </div>
       </div>
     );

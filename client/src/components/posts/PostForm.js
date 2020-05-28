@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/post";
+import PostImage from "../PostImages";
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState("");
@@ -28,6 +29,7 @@ const PostForm = ({ addPost }) => {
           required
           wrap='soft'
         />
+        <PostImage />
         <input type='submit' className='btn btn-dark my-1' value='Submit' />
       </form>
     </div>

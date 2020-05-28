@@ -24,28 +24,6 @@ const s3 = new aws.S3({
   Bucket: AWS_Bucket,
 });
 
-/*Single Upload*/
-const profileImgUpload = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: AWS_Bucket,
-    acl: "public-read",
-    key: function (req, file, cb) {
-      cb(
-        null,
-        path.basename(file.originalname, path.extname(file.originalname)) +
-          "-" +
-          Date.now() +
-          path.extname(file.originalname),
-      );
-    },
-  }),
-  limits: { fileSize: 2000000 }, // In bytes: 2000000 bytes = 2 MB
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
-  },
-}).single("profileImage");
-
 /**
  * Check File Type
  * @param file
@@ -65,34 +43,6 @@ function checkFileType(file, cb) {
     cb("Error: Images Only!");
   }
 }
-
-/**
- * @route POST /api/upload/business-img-upload
- * @desc Upload post image
- * @access public
- */
-router.post("/profile-img-upload", (req, res) => {
-  profileImgUpload(req, res, (error) => {
-    console.log("Image uploaded", req.file);
-
-    if (error) {
-      console.log("errors", error);
-      res.json({ error: error });
-    } else if (req.file === undefined) {
-      // If File not found
-      console.log("Error: No File Selected!");
-      res.json("Error: No File Selected");
-    } else {
-      // Success
-      //const imageName = req.file.key;
-      const imageLocation = req.file.location;
-      const profileFields = {
-        // user: req.user_id,
-        //displayPictureURL,
-      };
-    }
-  });
-});
 
 /**
  * BUSINESS GALLERY IMAGES

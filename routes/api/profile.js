@@ -368,16 +368,16 @@ function checkFileType(file, cb) {
  * @desc Upload post image
  * @access public
  */
-router.put("/profile-img-upload", auth, (req, res) => {
+router.post("/upload/profile-img-upload", auth, (req, res) => {
   profileImgUpload(req, res, async (error) => {
-    console.log("Image uploaded", req.file.location);
+    console.log("Image uploaded ", req.file.location);
 
     if (error) {
       console.log("errors", error);
       res.json({ error: error });
     } else if (req.file === undefined) {
       // If File not found
-      console.log("Error: No File Selected!");
+      //console.log("Error: No File Selected!");
       res.json("Error: No File Selected");
     }
     //success
@@ -388,9 +388,10 @@ router.put("/profile-img-upload", auth, (req, res) => {
 
       await profile.save();
 
-      res.json(profile);
+      // res.json(profile);
+      //console.log(profile);
     } catch (err) {
-      console.error(err.message);
+      //console.error(err.message);
       res.status(500).send("Server Error");
     }
   });
