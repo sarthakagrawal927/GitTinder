@@ -11,7 +11,7 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, user, likes, comments, date },
+  post: { _id, text, imageURL, name, user, likes, comments, date },
   showActions,
 }) => (
   <div className='post bg-white p-1 my-1'>
@@ -22,6 +22,11 @@ const PostItem = ({
       </Link>
     </div>
     <div>
+      {imageURL.map((imageURL) => (
+        <a key={imageURL} href={imageURL}>
+          <img src={imageURL} />
+        </a>
+      ))}
       <p className='my-1'>{text}</p>
       <p className='post-date'>
         Posted on <Moment format='DD/MM/YYYY'>{date}</Moment>

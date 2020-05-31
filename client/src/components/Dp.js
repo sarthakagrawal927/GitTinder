@@ -80,8 +80,8 @@ class Dp extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className='card-body'>
-        <p className='card-text'>Please upload an image for your profile</p>
+      <div id='oc-alert-container'>
+        <p>Please upload an image for your profile</p>
         <input type='file' onChange={this.singleFileChangedHandler} />
         {this.state.selectedFile && (
           <button

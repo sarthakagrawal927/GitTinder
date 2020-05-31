@@ -376,20 +376,16 @@ router.post("/upload/profile-img-upload", auth, (req, res) => {
       console.log("errors", error);
       res.json({ error: error });
     } else if (req.file === undefined) {
-      // If File not found
+      // File not found
       //console.log("Error: No File Selected!");
       res.json("Error: No File Selected");
     }
     //success
     try {
       const profile = await Profile.findOne({ user: req.user.id });
-
       profile.displayPictureURL = req.file.location;
-
       await profile.save();
-
-      // res.json(profile);
-      //console.log(profile);
+      res.json(profile);
     } catch (err) {
       //console.error(err.message);
       res.status(500).send("Server Error");
