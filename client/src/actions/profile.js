@@ -8,6 +8,7 @@ import {
   UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
+  DP_UPLOADED,
 } from "./types";
 
 // Get current users profile

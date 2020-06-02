@@ -1,3 +1,4 @@
+import "../css/profiles.css";
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -16,7 +17,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large text-primary dev-heading'>Developers</h1>
+          <h1 className='large dev-heading'>Developers</h1>
           <p className='lead'>
             <i className='fab fa-connectdevelop' /> Browse & Connect with
             Developers

@@ -15,7 +15,7 @@ const ProfileItem = ({
     skills,
   },
 }) => (
-  <div className='profile bg-light'>
+  <div className='profile'>
     <img
       src={displayPictureURL || (gender === "Male" ? male_image : female_image)}
       alt='DP'

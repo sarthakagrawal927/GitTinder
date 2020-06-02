@@ -1,0 +1,21 @@
+.big-heading {
+    font-family: "Ubuntu";
+    font-size: 3.5rem;
+    line-height: 1.5;
+}
+
+.container-fluid {
+    padding: 2rem;
+}
+
+
+/*Footer*/
+
+.colored-section {
+    background-color: #162447;
+    color: #fcfcfc;
+}
+
+.social-icon {
+    margin: 20px 10px;
+}
