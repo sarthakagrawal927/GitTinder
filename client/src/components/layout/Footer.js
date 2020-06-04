@@ -4,9 +4,9 @@ const aboutus = () => {
   return (
     <Fragment>
       {" "}
-      <div className='row'>
-        <div className='col-lg-6'>
-          <footer className='colored-section' id='footer'>
+      <footer className='colored-section' id='footer'>
+        <div className='row'>
+          <div className='col-lg-6'>
             <div className='container-fluid'>
               <i className='social-icon fab fa-facebook-f'></i>
               <i className='social-icon fab fa-twitter'></i>
@@ -14,11 +14,9 @@ const aboutus = () => {
               <i className='social-icon fas fa-envelope'></i>
               <p>© 2020 GitTinder</p>
             </div>
-          </footer>
-        </div>
+          </div>
 
-        <div className='col-lg-6'>
-          <footer className='colored-section' id='footer'>
+          <div className='col-lg-6'>
             <div className='container-fluid'>
               <h3>Contact Us !</h3>
               <p>
@@ -28,9 +26,9 @@ const aboutus = () => {
                 <i className='fas fa-phone'></i> Call us at (don't)
               </p>
             </div>
-          </footer>
+          </div>
         </div>
-      </div>
+      </footer>
     </Fragment>
   );
 };

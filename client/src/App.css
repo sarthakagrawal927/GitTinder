@@ -15,7 +15,7 @@
 }
 
 body {
-    font-family: "Ubuntu";
+    font-family: "Playfair Display", serif;
     font-size: 1rem;
     line-height: 1.6;
     background-color: rgb(245, 245, 245);
@@ -273,10 +273,10 @@ img {
     color: rgb(129, 129, 129);
 }
 
-.form input[type='text'],
-.form input[type='email'],
-.form input[type='password'],
-.form input[type='date'],
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="date"],
 .form select,
 .form textarea {
     display: block;
@@ -286,7 +286,7 @@ img {
     border: 1px solid #ccc;
 }
 
-.form input[type='submit'],
+.form input[type="submit"],
 button {
     font: inherit;
 }
@@ -384,7 +384,7 @@ button {
         margin: auto;
     }
     .profile-grid {
-        grid-template-areas: 'top' 'about' 'exp' 'edu' 'github';
+        grid-template-areas: "top" "about" "exp" "edu" "github";
     }
     .profile-about .skills {
         flex-direction: column;
