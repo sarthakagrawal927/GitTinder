@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Footer from "./Footer";
 // import { Link } from "react-router-dom";
-import "./../css/aboutus.css";
+// import "./../css/aboutus.css";
 
 const aboutus = () => {
   return (
