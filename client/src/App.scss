@@ -1,10 +1,10 @@
-@import "dashboard";
-@import "landing";
-@import "login";
-@import "navbar";
-@import "posts";
-@import "profilepage";
-@import "profiles";
+@import "./styles/dashboard";
+@import "./styles/landing";
+@import "./styles/login";
+@import "/styles/navbar";
+@import "./styles/posts";
+@import "./styles/profilepage";
+@import "./styles/profiles";
 
 /* Global Styles */
 
