@@ -1,4 +1,3 @@
-import "../css/navbar.css";
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
