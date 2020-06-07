@@ -3,12 +3,14 @@ import { setAlert } from "./alert";
 
 import {
   GET_PROFILE,
+  GET_PROFILE_POSTS,
+  NO_PROFILE_POSTS,
   GET_PROFILES,
   PROFILE_ERROR,
   UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
-  DP_UPLOADED,
+  // DP_UPLOADED,
 } from "./types";
 
 // Get current users profile
@@ -41,7 +43,7 @@ export const getProfiles = () => async (dispatch) => {
     });
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
+      type: NO_PROFILE_POSTS,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
@@ -54,6 +56,23 @@ export const getProfileById = (userId) => async (dispatch) => {
 
     dispatch({
       type: GET_PROFILE,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get posts by profile ID
+export const getProfilePosts = (userId) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/profile/user/${userId}/posts`);
+
+    dispatch({
+      type: GET_PROFILE_POSTS,
       payload: res.data,
     });
   } catch (err) {

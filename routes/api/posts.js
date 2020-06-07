@@ -17,6 +17,7 @@ const AWS_accessKeyId = keys.accessKeyId;
 const AWS_secretAccessKey = keys.secretAccessKey;
 const AWS_Bucket = keys.Bucket;
 
+require("./postfeatures");
 // @route    GET api/posts
 // @desc     Get all posts
 // @access   Private
@@ -41,77 +42,6 @@ router.get("/:id", [auth, checkObjectId("id")], async (req, res) => {
   } catch (err) {
     console.error(err.message);
 
-    res.status(500).send("Server Error");
-  }
-});
-
-// @route    DELETE api/posts/:id
-// @desc     Delete a post
-// @access   Private
-router.delete("/:id", [auth, checkObjectId("id")], async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-
-    // Check user
-    if (post.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "User not authorized" });
-    }
-
-    await post.remove();
-
-    res.json({ msg: "Post removed" });
-  } catch (err) {
-    console.error(err.message);
-
-    res.status(500).send("Server Error");
-  }
-});
-
-// @route    PUT api/posts/like/:id
-// @desc     Like a post
-// @access   Private
-router.put("/like/:id", [auth, checkObjectId("id")], async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-
-    // Check if the post has already been liked
-    if (post.likes.some((like) => like.user.toString() === req.user.id)) {
-      return res.status(400).json({ msg: "Post already liked" });
-    }
-
-    post.likes.unshift({ user: req.user.id });
-
-    await post.save();
-
-    return res.json(post.likes);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-});
-
-// @route    PUT api/posts/unlike/:id
-// @desc     Unlike a post
-// @access   Private
-router.put("/unlike/:id", [auth, checkObjectId("id")], async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-
-    // Check if the post has already been liked
-    if (!post.likes.some((like) => like.user.toString() === req.user.id)) {
-      return res.status(400).json({ msg: "Post has not yet been liked" });
-    }
-
-    // remove the like
-    post.likes = post.likes.filter(
-      ({ user }) => user.toString() !== req.user.id,
-    );
-
-    await post.save();
-
-    return res.json(post.likes);
-  } catch (err) {
-    console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
@@ -187,6 +117,8 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
   }
 });
 
+// @desc     S3 image upload backend
+
 const s3 = new aws.S3({
   accessKeyId: AWS_accessKeyId,
   secretAccessKey: AWS_secretAccessKey,
@@ -260,6 +192,9 @@ router.post(
   },
 );
 
+// @route    POST api/posts/upload/multiple_image_upload
+// @desc     Add images to a post
+// @access   Private
 router.post("/upload/multiple_image_upload", auth, (req, res) => {
   uploadsBusinessGallery(req, res, (error) => {
     console.log("files", req.files);

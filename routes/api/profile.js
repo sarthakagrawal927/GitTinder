@@ -158,6 +158,30 @@ router.get(
   },
 );
 
+// @route    GET api/profile/:user_id/posts
+// @desc     Get profile by user ID
+// @access   Public
+router.get(
+  "/user/:user_id/posts",
+  checkObjectId("user_id"),
+  async ({ params: { user_id } }, res) => {
+    try {
+      const posts = await Post.find({ user: { _id: user_id } }).sort({
+        date: -1,
+      });
+
+      if (!posts) return res.status(400).json({ msg: "No posts" });
+
+      return res.json(posts);
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).json({ msg: "Server error" });
+    }
+  },
+);
+
+// router.use("/user/:user_id/posts", require("./postfeatures"));
+
 // @route    DELETE api/profile
 // @desc     Delete profile, user & posts
 // @access   Private

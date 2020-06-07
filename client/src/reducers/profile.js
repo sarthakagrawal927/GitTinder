@@ -1,5 +1,7 @@
 import {
   GET_PROFILE,
+  GET_PROFILE_POSTS,
+  NO_PROFILE_POSTS,
   PROFILE_ERROR,
   CLEAR_PROFILE,
   UPDATE_PROFILE,
@@ -9,7 +11,7 @@ import {
 const initialState = {
   profile: null,
   profiles: [],
-  repos: [],
+  posts: [],
   loading: true,
   error: {},
 };
@@ -42,7 +44,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profile: null,
-        repos: [],
+        posts: [],
+      };
+    case GET_PROFILE_POSTS:
+      return {
+        ...state,
+        posts: payload,
+        loading: false,
+      };
+    case NO_PROFILE_POSTS:
+      return {
+        ...state,
+        posts: [],
       };
     default:
       return state;

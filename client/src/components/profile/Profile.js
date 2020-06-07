@@ -7,6 +7,7 @@ import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
+import ProfilePosts from "./ProfilePosts";
 import { getProfileById } from "../../actions/profile";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
@@ -65,6 +66,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div>
           </div>
+          {profile && <ProfilePosts userID={match.params.id} />}
         </Fragment>
       )}
     </Fragment>

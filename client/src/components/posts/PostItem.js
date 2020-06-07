@@ -24,7 +24,7 @@ const PostItem = ({
     <div>
       {imageURL.map((imageURL) => (
         <a key={imageURL} href={imageURL}>
-          <img src={imageURL} />
+          <img src={imageURL} alt='meme' />
         </a>
       ))}
       <p className='my-1'>{text}</p>

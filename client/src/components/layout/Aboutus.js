@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const aboutus = () => {
   return (
