@@ -180,7 +180,7 @@ router.get(
   },
 );
 
-// router.use("/user/:user_id/posts", require("./postfeatures"));
+router.use("/user/:user_id/posts", require("./postfeatures"));
 
 // @route    DELETE api/profile
 // @desc     Delete profile, user & posts

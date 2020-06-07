@@ -17,7 +17,6 @@ const AWS_accessKeyId = keys.accessKeyId;
 const AWS_secretAccessKey = keys.secretAccessKey;
 const AWS_Bucket = keys.Bucket;
 
-require("./postfeatures");
 // @route    GET api/posts
 // @desc     Get all posts
 // @access   Private
