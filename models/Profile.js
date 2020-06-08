@@ -10,6 +10,7 @@ const ProfileSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
+    default: "Female",
   },
   company: {
     type: String,

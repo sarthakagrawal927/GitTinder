@@ -5,6 +5,7 @@ const auth = require("../../middleware/auth");
 
 const Post = require("../../models/Post");
 const User = require("../../models/User");
+const Profile = require("../../models/Profile");
 const checkObjectId = require("../../middleware/checkObjectId");
 
 const aws = require("aws-sdk");
@@ -173,10 +174,15 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select("-password");
 
+      const profile = await Profile.findOne({ user: user });
+
       const newPost = new Post({
         text: req.body.text,
         name: user.name,
         user: req.user.id,
+        userDP: profile.displayPictureURL,
+        userBio: profile.bio,
+        userGender: profile.gender,
         imageURL: req.body.imageURL,
       });
 

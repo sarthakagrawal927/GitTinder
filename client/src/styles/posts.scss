@@ -19,8 +19,17 @@
     text-align: center;
 }
 
-.post img {
-    width: 90px;
+$memeWidth: 25rem;
+$memeHeight: 300 * 11/9;
+.meme {
+    width: $memeWidth;
+    height: $memeHeight;
+}
+
+$avatarDiameter: 5rem;
+.post .round-img {
+    width: $avatarDiameter;
+    height: $avatarDiameter;
 }
 
 .post .comment-count {

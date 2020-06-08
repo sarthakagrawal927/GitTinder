@@ -5,6 +5,16 @@ const PostSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
   },
+  userDP: {
+    type: String,
+  },
+  userBio: {
+    type: String,
+  },
+  userGender: {
+    type: String,
+    required: true,
+  },
   text: {
     type: String,
     required: true,
@@ -14,6 +24,7 @@ const PostSchema = new Schema({
   },
   name: {
     type: String,
+    required: true,
   },
   likes: [
     {

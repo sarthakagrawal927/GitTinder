@@ -4,32 +4,53 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
-import unisex_image from "../../img/unisex.png";
+import male_image from "../../img/male.png";
+import female_image from "../../img/female.png";
 
 const PostItem = ({
   addLike,
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, imageURL, name, user, likes, comments, date },
+  post: {
+    _id,
+    text,
+    imageURL,
+    name,
+    user,
+    userDP,
+    userGender,
+    userBio,
+    likes,
+    comments,
+    date,
+  },
   showActions,
 }) => (
   <div className='post bg-white p-1 my-1'>
     <div>
       <Link to={`/profile/${user}`}>
-        <img className='round-img' src={unisex_image} alt='' />
-        <h4>{name}</h4>
+        <p>
+          <img
+            className='round-img'
+            src={userDP || (userGender == "male" ? male_image : female_image)}
+            alt='DP'
+          />
+          <h4>{name}</h4>
+        </p>
       </Link>
+      <p>{userBio}</p>
     </div>
+
     <div>
       {imageURL.map((imageURL) => (
         <a key={imageURL} href={imageURL}>
-          <img src={imageURL} alt='meme' />
+          <img class='meme' src={imageURL} alt='meme' />
         </a>
       ))}
       <p className='my-1'>{text}</p>
       <p className='post-date'>
-        Posted on <Moment format='DD/MM/YYYY'>{date}</Moment>
+        Posted on <Moment format='MMMM Do YYYY, h:mm:ss a'>{date}</Moment>
       </p>
 
       {showActions && (
@@ -48,7 +69,7 @@ const PostItem = ({
             <i className='fas fa-thumbs-down' />
           </button>
           <Link to={`/posts/${_id}`} className='btn btn-primary'>
-            Discussion{" "}
+            Comments{" "}
             {comments.length > 0 && (
               <span className='comment-count'>{comments.length}</span>
             )}
