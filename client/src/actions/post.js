@@ -62,25 +62,6 @@ export const removeLike = (id) => async (dispatch) => {
   }
 };
 
-// Delete post
-export const deletePost = (id) => async (dispatch) => {
-  try {
-    await axios.delete(`/api/posts/${id}`);
-
-    dispatch({
-      type: DELETE_POST,
-      payload: id,
-    });
-
-    dispatch(setAlert("Post Removed", "success"));
-  } catch (err) {
-    dispatch({
-      type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
-  }
-};
-
 // Add post
 export const addPost = (formData) => async (dispatch) => {
   const config = {
@@ -112,10 +93,30 @@ export const getPost = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/posts/${id}`);
 
+    console.log(res);
     dispatch({
       type: GET_POST,
       payload: res.data,
     });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Delete post
+export const deletePost = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/posts/${id}`);
+
+    dispatch({
+      type: DELETE_POST,
+      payload: id,
+    });
+
+    dispatch(setAlert("Post Removed", "success"));
   } catch (err) {
     dispatch({
       type: POST_ERROR,

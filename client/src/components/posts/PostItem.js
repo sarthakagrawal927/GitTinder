@@ -18,12 +18,12 @@ const PostItem = ({
     category,
     imageURL,
     name,
+    comments,
     user,
     userDP,
     userGender,
     userBio,
     likes,
-    comments,
     date,
   },
   showActions,
@@ -54,7 +54,7 @@ const PostItem = ({
 
       <p className='my-1'>{text}</p>
       <p className='post-date'>
-        Posted on <Moment format='MMMM Do YYYY, h:mm:ss a'>{date}</Moment>
+        Posted on <Moment format='MMMM Do YYYY, h:mm a'>{date}</Moment>
       </p>
 
       {showActions && (
@@ -73,7 +73,7 @@ const PostItem = ({
             <i className='fas fa-thumbs-down' />
           </button>
           <Link to={`/posts/${_id}`} className='btn btn-primary'>
-            Comments{" "}
+            Discussions{""}
             {comments.length > 0 && (
               <span className='comment-count'>{comments.length}</span>
             )}
