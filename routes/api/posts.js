@@ -31,6 +31,22 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+// @route    GET api/posts/category
+// @desc     Get all posts of that category
+// @access   Private
+router.get("/:category", auth, async (req, res) => {
+  try {
+    const posts = await Post.find({ category: req.params.category }).sort({
+      date: -1,
+    });
+    console.log(posts);
+    res.json(posts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 // @route    GET api/posts/:id
 // @desc     Get post by ID
 // @access   Private
@@ -184,12 +200,13 @@ router.post(
         userBio: profile.bio,
         userGender: profile.gender,
         imageURL: req.body.imageURL,
+        category: req.body.category,
       });
 
       const post = await newPost.save();
 
       res.json(post);
-      console.log(post);
+      // console.log(post);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");

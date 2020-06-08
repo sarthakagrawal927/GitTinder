@@ -20,16 +20,20 @@
 }
 
 $memeWidth: 25rem;
-$memeHeight: 300 * 11/9;
+$memeHeight: 25rem;
 .meme {
-    width: $memeWidth;
-    height: $memeHeight;
+    max-width: $memeWidth;
+    max-height: $memeHeight;
 }
 
 $avatarDiameter: 5rem;
 .post .round-img {
     width: $avatarDiameter;
     height: $avatarDiameter;
+}
+
+div.post-images {
+    text-align: center;
 }
 
 .post .comment-count {

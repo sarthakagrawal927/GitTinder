@@ -7,6 +7,8 @@ import $ from "jquery";
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState("");
 
+  const [category, setCategory] = useState("");
+
   const [selectedFiles, setSelectedFiles] = useState("");
 
   const [imageURL, setURL] = useState([]);
@@ -82,10 +84,21 @@ const PostForm = ({ addPost }) => {
         className='form my-1'
         onSubmit={(e) => {
           e.preventDefault();
-          addPost({ text, imageURL });
+          addPost({ text, imageURL, category });
           setText("");
+          setCategory("");
           setURL([]);
         }}>
+        <textarea
+          name='category'
+          cols='20'
+          rows='1'
+          placeholder='Add Category'
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          wrap='soft'
+        />
+        <br />
         <textarea
           name='text'
           cols='30'

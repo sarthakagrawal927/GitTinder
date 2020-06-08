@@ -15,6 +15,7 @@ const PostItem = ({
   post: {
     _id,
     text,
+    category,
     imageURL,
     name,
     user,
@@ -30,24 +31,27 @@ const PostItem = ({
   <div className='post bg-white p-1 my-1'>
     <div>
       <Link to={`/profile/${user}`}>
-        <p>
-          <img
-            className='round-img'
-            src={userDP || (userGender == "male" ? male_image : female_image)}
-            alt='DP'
-          />
-          <h4>{name}</h4>
-        </p>
+        <img
+          className='round-img'
+          src={userDP || (userGender === "male" ? male_image : female_image)}
+          alt='DP'
+        />
+        <h4>{name}</h4>
       </Link>
-      <p>{userBio}</p>
+      <p className='post-date'>{userBio}</p>
+      <br />
+      {category && <p>Category : {category}</p>}
     </div>
 
     <div>
-      {imageURL.map((imageURL) => (
-        <a key={imageURL} href={imageURL}>
-          <img class='meme' src={imageURL} alt='meme' />
-        </a>
-      ))}
+      <div className='post-images'>
+        {imageURL.map((imageURL) => (
+          <a key={imageURL} href={imageURL}>
+            <img className='meme' src={imageURL} alt='meme' />
+          </a>
+        ))}
+      </div>
+
       <p className='my-1'>{text}</p>
       <p className='post-date'>
         Posted on <Moment format='MMMM Do YYYY, h:mm:ss a'>{date}</Moment>
