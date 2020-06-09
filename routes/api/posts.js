@@ -205,8 +205,13 @@ router.post(
 
       const post = await newPost.save();
 
+      profile.numberOfPosts++;
+      //console.log(profile.numberOfPosts);
+
+      profile.save();
+
       res.json(post);
-      console.log(post);
+      //console.log(post);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");

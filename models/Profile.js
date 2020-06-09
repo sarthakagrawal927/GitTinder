@@ -32,6 +32,14 @@ const ProfileSchema = new mongoose.Schema({
   bio: {
     type: String,
   },
+  likes: {
+    type: Number,
+    default: 0,
+  },
+  numberOfPosts: {
+    type: Number,
+    default: 0,
+  },
 
   experience: [
     {
