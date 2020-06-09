@@ -6,6 +6,10 @@ import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 import male_image from "../../img/male.png";
 import female_image from "../../img/female.png";
+// import Profile from "../../../../models/Profile";
+
+// const profile = Profile.findOne({ user: post.user });
+// console.log(profile);
 
 const PostItem = ({
   addLike,
