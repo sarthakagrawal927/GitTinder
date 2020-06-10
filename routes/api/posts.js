@@ -34,7 +34,7 @@ router.get("/", auth, async (req, res) => {
 // @route    GET api/posts/category
 // @desc     Get all posts of that category
 // @access   Private
-router.get("/category/:category", auth, async (req, res) => {
+router.get("category/:category", auth, async (req, res) => {
   try {
     const posts = await Post.find({ category: req.params.category }).sort({
       date: -1,
@@ -204,16 +204,13 @@ router.post(
       });
 
       const post = await newPost.save();
-
       profile.numberOfPosts++;
-      //console.log(profile.numberOfPosts);
-
       profile.save();
 
-      res.json(post);
-      //console.log(post);
+      var JSONPost = JSON.stringify(post);
+      res.send(JSONPost);
     } catch (err) {
-      console.error(err.message);
+      console.error(err);
       res.status(500).send("Server Error");
     }
   },

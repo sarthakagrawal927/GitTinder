@@ -3,6 +3,14 @@ body {
     font-weight: 400;
 }
 
+.aboutus {
+    position: relative;
+    background: url("../img/milky-way-2695569_1920.jpg") no-repeat center center/cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-origin: content-box, padding-box;
+}
+
 h1 {
     font-family: "Montserrat", sans-serif;
     font-weight: 900;
@@ -34,29 +42,6 @@ p {
 
 .container-fluid {
     padding: 3% 15% 7%;
-}
-
-
-/* Navigation Bar */
-
-.navbar {
-    padding: 0 0 4.5rem;
-}
-
-.navbar-brand {
-    font-family: "Ubuntu";
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-
-.nav-item {
-    padding: 0 18px;
-}
-
-.nav-link {
-    font-size: 1.2rem;
-    font-family: "Montserrat";
-    font-weight: lighter;
 }
 
 

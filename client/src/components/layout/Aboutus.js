@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 const aboutus = () => {
   return (
-    <Fragment>
+    <section className='aboutus'>
       <h1>
         CSS in progress, you can help us contact significanthobbies@gmail.com
       </h1>
@@ -79,11 +79,7 @@ const aboutus = () => {
                 You no longer have to keep looking around for a partener to code
                 with.There are a lot of coders here to team up with.
               </h2>
-              <img
-                class='testimonial-image'
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQzC9u-F7-Qb-JQeEo2X0CpgFQ2YyuSOGnGSWfQtSvEKfIQpAL9&usqp=CAU'
-                alt='dog-profile'
-              />
+
               <em>Sarthak Agarwal</em>
             </div>
             <div class='carousel-item'>
@@ -92,11 +88,7 @@ const aboutus = () => {
                 project but when I landed here,there were alot of coders looking
                 for teaming up.
               </h2>
-              <img
-                class='testimonial-image'
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQzC9u-F7-Qb-JQeEo2X0CpgFQ2YyuSOGnGSWfQtSvEKfIQpAL9&usqp=CAU'
-                alt='lady-profile'
-              />
+
               <em>A random girl</em>
             </div>
           </div>
@@ -118,7 +110,7 @@ const aboutus = () => {
       </section>
 
       <Footer />
-    </Fragment>
+    </section>
   );
 };
 

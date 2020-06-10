@@ -32,22 +32,21 @@ const PostItem = ({
   },
   showActions,
 }) => (
-  <div className='post bg-white p-1 my-1'>
+  <div className='post p-1 my-1'>
     <div>
       <Link to={`/profile/${user}`}>
         <img
           className='round-img'
-          src={userDP || (userGender === "male" ? male_image : female_image)}
+          src={userDP || (userGender === "female" ? female_image : male_image)}
           alt='DP'
         />
         <h4>{name}</h4>
       </Link>
-      <p className='post-date'>{userBio}</p>
       <br />
-      {category && <p>Category : {category}</p>}
     </div>
 
     <div>
+      {category && <p>Category : {category}</p>}
       <div className='post-images'>
         {imageURL.map((imageURL) => (
           <a key={imageURL} href={imageURL}>
@@ -77,7 +76,7 @@ const PostItem = ({
             <i className='fas fa-thumbs-down' />
           </button>
           <Link to={`/posts/${_id}`} className='btn btn-primary'>
-            Discussions{""}
+            Comments{""}
             {comments.length > 0 && (
               <span className='comment-count'>{comments.length}</span>
             )}

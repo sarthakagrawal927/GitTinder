@@ -1,5 +1,13 @@
 /* Posts Page */
 
+:root {
+    --primary-color: #1bb6ce;
+    --dark-color: #000000;
+    --light-color: #f3f3f3;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+}
+
 .post-form .post-form-header {
     margin: 3rem;
     background: var(--primary-color);
@@ -12,6 +20,8 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-gap: 1rem;
+    border-radius: 2rem;
+    background-color: var(--dark-color);
     align-items: center;
 }
 
