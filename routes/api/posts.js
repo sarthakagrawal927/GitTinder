@@ -34,7 +34,7 @@ router.get("/", auth, async (req, res) => {
 // @route    GET api/posts/category
 // @desc     Get all posts of that category
 // @access   Private
-router.get("category/:category", auth, async (req, res) => {
+router.get("/category/:category", auth, async (req, res) => {
   try {
     const posts = await Post.find({ category: req.params.category }).sort({
       date: -1,
