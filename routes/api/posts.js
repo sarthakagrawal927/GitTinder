@@ -31,7 +31,7 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// @route    GET api/posts/category
+// @route    GET api/posts/category/:category
 // @desc     Get all posts of that category
 // @access   Private
 router.get("/category/:category", auth, async (req, res) => {

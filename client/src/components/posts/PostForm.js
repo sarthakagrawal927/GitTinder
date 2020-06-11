@@ -89,15 +89,27 @@ const PostForm = ({ addPost }) => {
           setCategory("");
           setURL([]);
         }}>
-        <textarea
-          name='category'
-          cols='20'
-          rows='1'
-          placeholder='Add Category'
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          wrap='soft'
-        />
+        <div className='form-group'>
+          <select
+            name='category'
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}>
+            <option value='Web Development'>Web Development</option>
+            <option value='Game Development'>Game Development</option>
+            <option value='Machine Learning'>Machine Learning</option>
+            <option value='Competitive Coding'>Competitive Coding</option>
+            <option value='Mobile Software Development'>
+              Mobile Software Development
+            </option>
+            <option value='Internet Of Things'>Internet Of Things</option>
+            <option value='Designing'>Designing</option>
+            <option value='Other'>Other</option>
+          </select>
+          <small className='form-text'>
+            Give us an idea of where you are at in your career
+          </small>
+        </div>
+
         <br />
         <textarea
           name='text'

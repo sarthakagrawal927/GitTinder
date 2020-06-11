@@ -377,7 +377,7 @@ const profileImgUpload = multer({
 
 /* Check File Type*/
 function checkFileType(file, cb) {
-  const filetypes = /jpeg|jpg|png|gif/;
+  const filetypes = /jpeg|jpg|png|gif|jfif/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = filetypes.test(file.mimetype);
   if (mimetype && extname) {

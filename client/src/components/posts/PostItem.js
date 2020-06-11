@@ -6,10 +6,6 @@ import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 import male_image from "../../img/male.png";
 import female_image from "../../img/female.png";
-// import Profile from "../../../../models/Profile";
-
-// const profile = Profile.findOne({ user: post.user });
-// console.log(profile);
 
 const PostItem = ({
   addLike,
@@ -33,16 +29,18 @@ const PostItem = ({
   showActions,
 }) => (
   <div className='post p-1 my-1'>
+    {console.log(userGender)}
+
     <div>
       <Link to={`/profile/${user}`}>
         <img
           className='round-img'
-          src={userDP || (userGender === "female" ? female_image : male_image)}
+          src={userDP || (userGender === "Male" ? male_image : female_image)}
           alt='DP'
         />
         <h4>{name}</h4>
       </Link>
-      <br />
+      <p>{userBio}</p>
     </div>
 
     <div>

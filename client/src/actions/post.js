@@ -108,20 +108,22 @@ export const getPost = (id) => async (dispatch) => {
 
 // Delete post
 export const deletePost = (id) => async (dispatch) => {
-  try {
-    await axios.delete(`/api/posts/${id}`);
+  if (window.confirm("Are you sure? This can NOT be undone!")) {
+    try {
+      await axios.delete(`/api/posts/${id}`);
 
-    dispatch({
-      type: DELETE_POST,
-      payload: id,
-    });
+      dispatch({
+        type: DELETE_POST,
+        payload: id,
+      });
 
-    dispatch(setAlert("Post Removed", "success"));
-  } catch (err) {
-    dispatch({
-      type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
+      dispatch(setAlert("Post Removed", "success"));
+    } catch (err) {
+      dispatch({
+        type: POST_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status },
+      });
+    }
   }
 };
 
