@@ -1,6 +1,6 @@
 .profile-grid {
     display: grid;
-    grid-template-areas: 'top top' 'about about' 'exp edu' 'github github';
+    grid-template-areas: "top top" "about about" "exp edu" "github github";
     grid-gap: 1rem;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .profile-top .icons a:hover {
-    color: var(--dark-color);
+    color: $dark-color;
 }
 
 .profile-about {

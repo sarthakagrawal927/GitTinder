@@ -1,16 +1,8 @@
 /* Posts Page */
 
-:root {
-    --primary-color: #1bb6ce;
-    --dark-color: #000000;
-    --light-color: #f3f3f3;
-    --danger-color: #dc3545;
-    --success-color: #28a745;
-}
-
 .post-form .post-form-header {
     margin: 3rem;
-    background: var(--primary-color);
+    background: $primary-color;
     padding: 0.5rem;
 }
 
@@ -21,7 +13,7 @@
     grid-template-columns: 1fr 4fr;
     grid-gap: 1rem;
     border-radius: 2rem;
-    background-color: var(--dark-color);
+    background-color: $dark-color;
     align-items: center;
 }
 
@@ -48,14 +40,14 @@ div.post-images {
 
 .post .comment-count {
     background: var(--light-color);
-    color: var(--primary-color);
+    color: $primary-color;
     padding: 0.1rem 0.2rem;
     border-radius: 5px;
     font-size: 0.8rem;
 }
 
 .post .post-date {
-    color: #aaa;
+    color: $grey-text-color;
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
 }

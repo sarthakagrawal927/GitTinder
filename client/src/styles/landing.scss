@@ -1,11 +1,11 @@
 .landing {
     position: relative;
     background: url("../img/showcase.jpg") no-repeat center center/cover;
-    height: 100vh;
+    height: 88vh;
 }
 
 .landing-inner {
-    color: #fcfcfc;
+    color: $text-color;
     height: 100%;
     width: 80%;
     margin: auto;

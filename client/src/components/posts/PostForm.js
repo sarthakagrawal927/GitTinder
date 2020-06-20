@@ -94,20 +94,14 @@ const PostForm = ({ addPost }) => {
             name='category'
             value={category}
             onChange={(e) => setCategory(e.target.value)}>
-            <option value='Web Development'>Web Development</option>
-            <option value='Game Development'>Game Development</option>
-            <option value='Machine Learning'>Machine Learning</option>
-            <option value='Competitive Coding'>Competitive Coding</option>
-            <option value='Mobile Software Development'>
-              Mobile Software Development
-            </option>
+            <option value='Web Development'>Development</option>
+            <option value='Data Science'>Data Science</option>
+            <option value='Coding Contest'>Coding Contest</option>
+            <option value='Mobile Software Development'>Cyber Security</option>
             <option value='Internet Of Things'>Internet Of Things</option>
             <option value='Designing'>Designing</option>
             <option value='Other'>Other</option>
           </select>
-          <small className='form-text'>
-            Give us an idea of where you are at in your career
-          </small>
         </div>
 
         <br />

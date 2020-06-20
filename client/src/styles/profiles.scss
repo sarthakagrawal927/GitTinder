@@ -1,13 +1,5 @@
-:root {
-    --primary-color: #1bb6ce;
-    --dark-color: #000000;
-    --light-color: #f3f3f3;
-    --danger-color: #dc3545;
-    --success-color: #28a745;
-}
-
 .dev-heading {
-    color: var(--primary-color);
+    color: $primary-color;
 }
 
 .profile {
@@ -19,8 +11,8 @@
     padding: 2rem;
     line-height: 1.5;
     margin-bottom: 2rem;
-    background-color: var(--dark-color);
-    color: var(--primary-color);
+    background-color: $dark-color;
+    color: $primary-color;
     border-radius: 2rem;
 }
 

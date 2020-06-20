@@ -4,113 +4,75 @@ import Footer from "./Footer";
 
 const aboutus = () => {
   return (
-    <section className='aboutus'>
-      <h1>
-        CSS in progress, you can help us contact significanthobbies@gmail.com
-      </h1>
+    <div className='aboutus'>
+      <h3>
+        CSS in progress, you can help us contact: <br />
+        <br />
+        <a href='mailto:significanthobbies@gmail.com'>
+          significanthobbies@gmail.com
+        </a>
+      </h3>
+      <p>
+        This is platform to connect with developers to learn and build products
+      </p>
       <section id='pricing'>
-        <h2>Upcoming Features</h2>
-        <p>
-          Simple and FREE platform to connect with other fellow coders to
-          unleash your creativity.
-        </p>
+        <h2>Planned Products & Features</h2>
         <div class='row'>
-          <div class='pricing-column col-lg-4 col-md-6'>
+          <div class='pricing-column col-lg-6'>
             <div class='card'>
               <div class='card-header'>
-                <h3>&#60; Find Your Buddy /&#62;</h3>
+                <h3>GitTinder</h3>
               </div>
               <div class='card-body'>
-                <h2>#BuddyNextDoor</h2>
-                <p>Upto 5 Team-ups/Day</p>
-                <p>Upto 10 Messages/Day</p>
-                <p>Unlimited App Usage</p>
-                <button
-                  class='btn btn-outline-dark btn-lg btn-block'
-                  type='button'>
-                  Sign Up
-                </button>
+                <p>Global Chat</p>
+                <p>Bot as Guide</p>
+                <p>Neural Network Recommender</p>
+                <p>Team-Management Features</p>
               </div>
             </div>
           </div>
-          <div class='pricing-column col-lg-4 col-md-6'>
+          <div class='pricing-column col-lg-6 col-md-6'>
             <div class='card'>
               <div class='card-header'>
-                <h3>Code Together</h3>
+                <h3>Memenza </h3>
               </div>
               <div class='card-body'>
-                <h2>#EverythingBuilt-In</h2>
-                <p>Compiler & Editor</p>
-                <p>Unique Chat Options</p>
-                <p>Send Anything!</p>
-                <button
-                  class='btn btn-outline-dark btn-lg btn-block'
-                  type='button'>
-                  Sign Up
-                </button>
+                <p>Ultimate Meme Showdown</p>
+                <p>Memes by Category</p>
+                <p>AI generated Memes</p>
+                <p>LeaderBoard</p>
               </div>
             </div>
           </div>
-          <div class='pricing-column col-lg-4'>
+          <div class='pricing-column col-lg-6 col-md-6'>
             <div class='card'>
               <div class='card-header'>
-                <h3>Create A Team</h3>
+                <h3>FlashSurvey</h3>
               </div>
               <div class='card-body'>
-                <h2>#SquadGoalsTogether</h2>
-                <p>Group Chat Available</p>
-                <p>Broadcast Messages</p>
-                <p>Task Management Features</p>
-                <button
-                  class='btn btn-outline-dark btn-lg btn-block'
-                  type='button'>
-                  Sign Up
-                </button>
+                <p>Google Form RipOff</p>
+                <p>Stylable</p>
+                <p>Mailer Integration</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section id='testimonials'>
-        <div id='testimonial-carousel' class='carousel slide' data-ride='false'>
-          <div class='carousel-inner'>
-            <div class='carousel-item active'>
-              <h2>
-                You no longer have to keep looking around for a partener to code
-                with.There are a lot of coders here to team up with.
-              </h2>
-
-              <em>Sarthak Agarwal</em>
-            </div>
-            <div class='carousel-item'>
-              <h2 class='testimonial-text'>
-                I was tired of looking for someone to partener with on my
-                project but when I landed here,there were alot of coders looking
-                for teaming up.
-              </h2>
-
-              <em>A random girl</em>
+          <div class='pricing-column col-lg-6'>
+            <div class='card'>
+              <div class='card-header'>
+                <h3>Blog</h3>
+              </div>
+              <div class='card-body'>
+                <p>Newsletter</p>
+                <p>Tools for enhanced writing experience</p>
+                <p>Multiple Channels</p>
+              </div>
             </div>
           </div>
-          <a
-            class='carousel-control-prev'
-            href='#testimonial-carousel'
-            role='button'
-            data-slide='prev'>
-            <span class='carousel-control-prev-icon'></span>
-          </a>
-          <a
-            class='carousel-control-next'
-            href='#testimonial-carousel'
-            role='button'
-            data-slide='next'>
-            <span class='carousel-control-next-icon'></span>
-          </a>
         </div>
       </section>
 
       <Footer />
-    </section>
+    </div>
   );
 };
 
