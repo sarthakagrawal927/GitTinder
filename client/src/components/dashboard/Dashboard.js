@@ -31,7 +31,7 @@ const Dashboard = ({
 
           <div className='my-2'>
             <button className='btn btn-danger' onClick={() => deleteAccount()}>
-              <i className='fas fa-user-minus' /> Delete My Account
+              <i class='fas fa-trash-alt'></i> Delete My Account
             </button>
           </div>
         </Fragment>

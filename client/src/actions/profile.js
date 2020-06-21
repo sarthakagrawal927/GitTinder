@@ -10,6 +10,7 @@ import {
   UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
+  GET_LEADERBOARD,
   // DP_UPLOADED,
 } from "./types";
 
@@ -240,5 +241,24 @@ export const deleteAccount = () => async (dispatch) => {
         payload: { msg: err.response.statusText, status: err.response.status },
       });
     }
+  }
+};
+
+// Get Leaderboard
+export const getLeaderboard = () => async (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
+
+  try {
+    const res = await axios.get("/api/leaderboard");
+
+    dispatch({
+      type: GET_LEADERBOARD,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: NO_PROFILE_POSTS,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
   }
 };

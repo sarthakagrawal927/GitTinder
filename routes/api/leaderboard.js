@@ -5,7 +5,9 @@ const Profile = require("../../models/Profile");
 
 router.get("/", async (req, res) => {
   try {
-    const profiles = await Profile.find().sort({ likes: -1 });
+    const profiles = await Profile.find({ likes: { $gt: -1 } })
+      .sort({ likes: -1 })
+      .populate("user", ["name"]);
 
     res.json(profiles);
   } catch (err) {

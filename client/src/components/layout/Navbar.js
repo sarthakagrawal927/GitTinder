@@ -9,7 +9,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <ul>
       <li>
         <Link className='nav-link' to='/profiles'>
-          Developers
+          <i class='fas fa-globe'></i>{" "}
+          <span className='hide-sm'>Developers</span>
         </Link>
       </li>
       <li>
@@ -20,6 +21,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <Link className='nav-link' to='/aboutus'>
           About Us
+        </Link>
+      </li>
+      <li>
+        <Link className='nav-link' to='/leaderboard'>
+          Leaderboard
         </Link>
       </li>
       <li>
@@ -39,6 +45,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul>
+      <li>
+        <Link className='nav-link' to='/leaderboard'>
+          Leaderboard
+        </Link>
+      </li>
       <li>
         <Link className='nav-link' to='/aboutus'>
           About Us

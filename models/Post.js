@@ -13,7 +13,6 @@ const PostSchema = new Schema({
   },
   userGender: {
     type: String,
-    required: true,
   },
   text: {
     type: String,

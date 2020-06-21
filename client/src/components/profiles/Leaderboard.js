@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import ProfileItem from "./ProfileItem";
-import { getProfiles } from "../../actions/profile";
+import { getLeaderboard } from "../../actions/profile";
 
-const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+const Profiles = ({ getLeaderboard, profile: { profiles, loading } }) => {
   useEffect(() => {
-    getProfiles();
-  }, [getProfiles]);
+    getLeaderboard();
+  }, [getLeaderboard]);
 
   return (
     <Fragment>
@@ -16,15 +16,14 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large dev-heading'>Developers</h1>
-          <p className='lead'>Connect with your fellow Developers</p>
+          <h1 className='large dev-heading'>Leaderboard</h1>
           <div className='profiles'>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
                 <ProfileItem
                   key={profile._id}
                   profile={profile}
-                  from='developers'
+                  from='leaderboard'
                 />
               ))
             ) : (
@@ -38,7 +37,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 };
 
 Profiles.propTypes = {
-  getProfiles: PropTypes.func.isRequired,
+  getLeaderboard: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
@@ -46,4 +45,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getProfiles })(Profiles);
+export default connect(mapStateToProps, { getLeaderboard })(Profiles);

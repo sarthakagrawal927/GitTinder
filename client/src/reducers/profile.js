@@ -6,6 +6,7 @@ import {
   CLEAR_PROFILE,
   UPDATE_PROFILE,
   GET_PROFILES,
+  GET_LEADERBOARD,
 } from "../actions/types";
 
 const initialState = {
@@ -28,6 +29,7 @@ export default function (state = initialState, action) {
         loading: false,
       };
     case GET_PROFILES:
+    case GET_LEADERBOARD:
       return {
         ...state,
         profiles: payload,
