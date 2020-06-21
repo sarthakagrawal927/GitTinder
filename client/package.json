@@ -8,6 +8,7 @@
         "@testing-library/user-event": "^7.2.1",
         "babel-eslint": "^10.1.0",
         "bootstrap": "^4.5.0",
+        "conversational-form": "^1.0.2",
         "jquery": "^3.5.1",
         "moment": "^2.24.0",
         "node-sass": "^4.14.1",

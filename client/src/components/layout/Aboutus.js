@@ -1,7 +1,6 @@
 import React from "react";
 import Footer from "./Footer";
-// import { Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 const aboutus = () => {
   return (
     <div className='aboutus'>
@@ -69,6 +68,9 @@ const aboutus = () => {
             </div>
           </div>
         </div>
+        <h4>
+          For more Info <Link to='/conversationform'> Click Here</Link>
+        </h4>
       </section>
 
       <Footer />
