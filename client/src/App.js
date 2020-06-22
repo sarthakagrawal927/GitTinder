@@ -59,6 +59,36 @@ const App = () => {
           },
         ]}
       />
+      <Helmet>
+        <title>GitTinder</title>
+        <meta
+          name='description'
+          content='GitTinder is a social networking and online developer meeting application/website that allows users to connect with similar minds'
+        />
+        <meta property='og:url' content='https://gittinder.herokuapp.com/' />
+        <meta property='og:type' content='social-media' />
+        <meta
+          property='og:title'
+          content='GitTinder GitHub Tinder DevConnector'
+        />
+        <meta
+          property='og:description'
+          content='GitTinder is a social networking and online developer meeting application/website that allows users to connect with similar minds'
+        />
+        <meta property='og:type' content='website' />
+        <meta
+          name='keywords'
+          content='GitHub Tinder GitTinder social-media hub developers connect'
+        />
+        <meta
+          name='author'
+          content='Sarthak Agrawal Significant Hobbies GitTinder'
+        />
+        <meta
+          name='google-site-verification'
+          content='pyKM-6DhxSOA_-VpK-7RIaCk4W8OAi3w5MBzLm05lwA'
+        />
+      </Helmet>
       <Provider store={store}>
         <Router>
           <Fragment>
