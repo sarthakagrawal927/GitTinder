@@ -104,6 +104,21 @@ const aboutus = () => {
               .
             </p>
           </div>
+
+          <div className='col-lg-4 why'>
+            <h3>Why not use Github ?</h3>
+          </div>
+          <div className='col-lg-8 reason'>
+            <p>
+              Github has its own merits , finding projects in early stages is
+              not one of them.
+              <br />
+              Technically you can, but it's too difficult to find projects in
+              starting stage on Github. GitTinder aims to allow users to connect
+              during the ideation period. And also you can start courses
+              together and help each other progress faster.
+            </p>
+          </div>
         </div>
       </section>
       <br />

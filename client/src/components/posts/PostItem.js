@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
-import male_image from "../../img/male.png";
-import female_image from "../../img/female.png";
+import male_image from "../../img/male.webp";
+import female_image from "../../img/female.webp";
 
 const PostItem = ({
   addLike,

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import male_image from "../../img/male.png";
-import female_image from "../../img/female.png";
+import male_image from "../../img/male.webp";
+import female_image from "../../img/female.webp";
 const ProfileTop = ({
   profile: {
     displayPictureURL,
