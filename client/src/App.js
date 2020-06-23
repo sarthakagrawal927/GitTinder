@@ -36,51 +36,26 @@ const App = () => {
           },
           {
             property: "og:title",
-            content: "GitTinder GitHub Tinder DevConnector",
+            content: "GitTinder GitHub+Tinder Where Developers Meet",
           },
           {
             property: "og:image",
-            content: "http://example.com/article.jpg",
+            content:
+              "https://significant.s3.amazonaws.com/significanthobbies-1592919043997.png",
           },
           { property: "og:url", content: "http://gittinder.herokuapp.com" },
-          { property: "og:type", content: "social-media" },
+          { property: "og:type", content: "social-media developers" },
           {
             name: "keywords",
             content:
-              "GitHub Tinder GitTinder social-media hub developers connect",
+              "GitHub Tinder GitTinder social-media hub developers connect significant hobbies significanthobbies",
           },
           {
             name: "author",
-            content: "Sarthak Agrawal Significant Hobbies GitTinder",
+            content: "SignificantHobbies GitTinder Significant Hobbies",
           },
         ]}
       />
-      <Helmet>
-        <title>GitTinder</title>
-        <meta
-          name='description'
-          content='GitTinder is a social networking and online developer meeting application/website that allows users to connect with similar minds'
-        />
-        <meta property='og:url' content='https://gittinder.herokuapp.com/' />
-        <meta property='og:type' content='social-media' />
-        <meta
-          property='og:title'
-          content='GitTinder GitHub Tinder DevConnector'
-        />
-        <meta
-          property='og:description'
-          content='GitTinder is a social networking and online developer meeting application/website that allows users to connect with similar minds'
-        />
-        <meta property='og:type' content='website' />
-        <meta
-          name='keywords'
-          content='GitHub Tinder GitTinder social-media hub developers connect'
-        />
-        <meta
-          name='author'
-          content='Sarthak Agrawal Significant Hobbies GitTinder'
-        />
-      </Helmet>
       <Provider store={store}>
         <Router>
           <Fragment>
