@@ -1,10 +1,16 @@
 import React from "react";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import Emoji from "./Emoji";
 const aboutus = () => {
   return (
     <div className='aboutus'>
-      <h2>Work in progress</h2>
+      <h2>
+        Work in progress <Emoji symbol='💡' label='bulb' />{" "}
+      </h2>
+      <h3>
+        Open Source <Emoji symbol='😀' label='smiley face' />
+      </h3>
 
       <p>
         This is a platform to connect with developers to learn and build
