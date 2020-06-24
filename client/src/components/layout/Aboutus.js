@@ -82,7 +82,11 @@ const aboutus = () => {
             <p>
               GitTinder aims to help various developers connect with each other
               so that they can collaborate in projects and find accountability
-              partners for rapid learning.
+              partners for rapid learning. To get updates regarding the progress
+              join the{" "}
+              <a href='https://chat.whatsapp.com/HTW5WVJIPD42ACIL2z2pXu'>
+                Whatsapp Group
+              </a>
             </p>
           </div>
 
