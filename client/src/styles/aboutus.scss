@@ -8,6 +8,7 @@
     }
     a:hover {
         text-decoration: none;
+        color: $dark-color;
     }
     h1,
     h2,
@@ -34,11 +35,10 @@
     }
     /* Footer section */
     #footer {
-        padding: 2% 8%;
         text-align: center;
     }
     .social-icon {
-        margin: 20px 10px;
+        margin: 0.5vw;
     }
     #about {
         h2 {

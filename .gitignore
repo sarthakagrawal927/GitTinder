@@ -2,3 +2,4 @@ node_modules/
 client/node_modules
 config/dev.js
 .vscode/
+client/build

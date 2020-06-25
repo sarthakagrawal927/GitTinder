@@ -40,11 +40,11 @@ const PostItem = ({
         />
         <h4>{name}</h4>
       </Link>
-      <p>{userBio}</p>
+      {/* <p>{userBio}</p> */}
     </div>
 
     <div>
-      {category && <p>Category : {category}</p>}
+      {category && <p className='post-date'>Category : {category}</p>}
       <div className='post-images'>
         {imageURL.map((imageURL) => (
           <a key={imageURL} href={imageURL}>

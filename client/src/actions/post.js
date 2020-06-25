@@ -2,6 +2,7 @@ import axios from "axios";
 import { setAlert } from "./alert";
 import {
   GET_POSTS,
+  GET_POSTS_BY_CATEGORY,
   POST_ERROR,
   UPDATE_LIKES,
   DELETE_POST,
@@ -18,6 +19,23 @@ export const getPosts = () => async (dispatch) => {
 
     dispatch({
       type: GET_POSTS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get posts by Category
+export const getPostsByCategory = (category) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/posts/category/${category}`);
+
+    dispatch({
+      type: GET_POSTS_BY_CATEGORY,
       payload: res.data,
     });
   } catch (err) {

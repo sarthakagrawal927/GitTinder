@@ -129,7 +129,7 @@ const PostForm = ({ addPost }) => {
           name='imageURL'
           cols='30'
           rows='3'
-          placeholder='Image URL(s) here [You can add your image links too, its recommended as uploading would take time, backend sucks]'
+          placeholder='[You can add your image URLs here, its recommended as it would save us storage]'
           value={imageURL}
           onChange={(e) => setURL(e.target.value)}
           wrap='soft'
