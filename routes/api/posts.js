@@ -34,12 +34,13 @@ router.get("/", auth, async (req, res) => {
 // @route    GET api/posts/category/:category
 // @desc     Get all posts of that category
 // @access   Private
-router.get("/category/:category", auth, async (req, res) => {
+router.get("/categories/:category", auth, async (req, res) => {
   try {
     const posts = await Post.find({ category: req.params.category }).sort({
       date: -1,
     });
-    console.log(posts);
+    console.log("inside backend");
+    console.log(req.params.category);
     res.json(posts);
   } catch (err) {
     console.error(err.message);
@@ -53,11 +54,9 @@ router.get("/category/:category", auth, async (req, res) => {
 router.get("/:id", [auth, checkObjectId("id")], async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-
     res.json(post);
   } catch (err) {
     console.error(err.message);
-
     res.status(500).send("Server Error");
   }
 });

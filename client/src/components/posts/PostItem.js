@@ -22,15 +22,12 @@ const PostItem = ({
     user,
     userDP,
     userGender,
-    userBio,
     likes,
     date,
   },
   showActions,
 }) => (
   <div className='post p-1 my-1'>
-    {console.log(userGender)}
-
     <div>
       <Link to={`/profile/${user}`}>
         <img
@@ -40,11 +37,10 @@ const PostItem = ({
         />
         <h4>{name}</h4>
       </Link>
-      {/* <p>{userBio}</p> */}
     </div>
 
     <div>
-      {category && <p className='post-date'>Category : {category}</p>}
+      {category && <p className='post-date'>{category}</p>}
       <div className='post-images'>
         {imageURL.map((imageURL) => (
           <a key={imageURL} href={imageURL}>
@@ -55,7 +51,7 @@ const PostItem = ({
 
       <p className='my-1'>{text}</p>
       <p className='post-date'>
-        Posted on <Moment format='MMMM Do YYYY, h:mm a'>{date}</Moment>
+        <Moment format='MMMM Do YYYY, h:mm a'>{date}</Moment>
       </p>
 
       {showActions && (

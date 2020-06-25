@@ -32,11 +32,14 @@ export const getPosts = () => async (dispatch) => {
 // Get posts by Category
 export const getPostsByCategory = (category) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/posts/category/${category}`);
+    console.log("inside action");
+    const res = await axios.get(`/api/posts/categories/${category}`);
+
+    console.log(res.data);
 
     dispatch({
       type: GET_POSTS_BY_CATEGORY,
-      payload: res.data,
+      payload: { category, posts: res.data },
     });
   } catch (err) {
     dispatch({

@@ -10,5 +10,8 @@ $grey-text-color: #aaa;
 
 /*Fonts*/
 
-$font-text: ' "Playfair Display",serif';
-$heading-text: "Ubuntu";
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+$font-text: "PT Sans",
+sans-serif;
+$heading-text: "PT Sans",
+sans-serif;

@@ -6,10 +6,15 @@ import { logout } from "../../actions/auth";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const Categories = [
-    { category: "Development", Link: "/posts/category/development" },
-    { category: "Development", Link: "/posts/category/development" },
-    { category: "Development", Link: "/posts/category/development" },
+    { category: "All", Link: "/posts" },
+    { category: "Web Development", Link: "/posts/categories/web-development" },
+    {
+      category: "Mobile Software Dev",
+      Link: "/posts/categories/mobile-development",
+    },
+    { category: "Development", Link: "/posts/categories/development" },
   ];
+
   const authLinks = Categories.map((topic) => (
     <li key={topic.category}>
       <Link className='nav-link' to={topic.Link}>
