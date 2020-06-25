@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
 import { getPosts } from "../../actions/post";
-import CategoryNavbar from "../layout/CategoryNavbar";
+// import CategoryNavbar from "../layout/CategoryNavbar";
 
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {

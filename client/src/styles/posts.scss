@@ -16,6 +16,12 @@
     border-radius: 2rem;
     background-color: $dark-color;
     align-items: center;
+    p {
+        color: $primary-color;
+    }
+    .comment-count {
+        color: $danger-color;
+    }
 }
 
 .post>div:first-child {
@@ -37,14 +43,6 @@ $avatarDiameter: 5rem;
 
 div.post-images {
     text-align: center;
-}
-
-.post .comment-count {
-    background: var(--light-color);
-    color: $primary-color;
-    padding: 0.1rem 0.2rem;
-    border-radius: 5px;
-    font-size: 0.8rem;
 }
 
 .post .post-date {

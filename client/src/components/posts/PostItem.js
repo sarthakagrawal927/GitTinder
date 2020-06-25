@@ -71,9 +71,6 @@ const PostItem = ({
           </button>
           <Link to={`/posts/${_id}`} className='btn btn-primary'>
             Comments{""}
-            {comments.length > 0 && (
-              <span className='comment-count'>{comments.length}</span>
-            )}
           </Link>
           {!auth.loading && user === auth.user._id && (
             <button
