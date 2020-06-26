@@ -2,13 +2,16 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Spinner from "../layout/Spinner";
-import ProfileTop from "./ProfileTop";
-import ProfileAbout from "./ProfileAbout";
-import ProfileExperience from "./ProfileExperience";
-import ProfileEducation from "./ProfileEducation";
-import ProfilePosts from "./ProfilePosts";
+import loadable from "@loadable/component";
+
 import { getProfileById } from "../../actions/profile";
+
+const ProfileTop = loadable(() => import("./ProfileTop"));
+const ProfileAbout = loadable(() => import("./ProfileAbout"));
+const ProfileExperience = loadable(() => import("./ProfileExperience"));
+const ProfileEducation = loadable(() => import("./ProfileEducation"));
+const ProfilePosts = loadable(() => import("./ProfilePosts"));
+const Spinner = loadable(() => import("../layout/Spinner"));
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {

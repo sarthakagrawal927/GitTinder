@@ -1,9 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-// import PostItem from "./PostItem";
+import loadable from "@loadable/component";
+
 import { getPostsByCategory } from "../../actions/post";
-import CategoryNavbar from "../layout/CategoryNavbar";
+
+//const PostItem = loadable(() => import("./PostItem"));
+const CategoryNavbar = loadable(() => import("../layout/CategoryNavbar"));
 
 const Posts = ({ getPostsByCategory, post: posts }) => {
   useEffect(() => {

@@ -2,11 +2,12 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import DashboardActions from "./DashboardActions";
-import Experience from "./Experience";
-import Education from "./Education";
+import loadable from "@loadable/component";
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 
+const DashboardActions = loadable(() => import("./DashboardActions"));
+const Experience = loadable(() => import("./Experience"));
+const Education = loadable(() => import("./Education"));
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
