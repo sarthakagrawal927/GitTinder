@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./config/db");
+const compression = require("compression");
 const path = require("path");
 
 //Connect Database
@@ -9,6 +10,19 @@ connectDB();
 //adding middleware
 app.use(express.json());
 
+//Compression
+const shouldCompress = (req, res) => {
+  if (req.headers["x-no-compression"]) {
+    return false;
+  }
+  return compression.filter(req, res);
+};
+app.use(
+  compression({
+    filter: shouldCompress,
+    level: 8,
+  }),
+);
 //All routes
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
