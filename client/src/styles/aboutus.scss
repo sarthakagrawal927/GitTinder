@@ -35,10 +35,16 @@
     }
     /* Footer section */
     #footer {
+        margin-top: 6vh;
+        margin-bottom: 0vh;
         text-align: center;
+        padding: 0;
     }
     .social-icon {
         margin: 0.5vw;
+    }
+    .container-fluid {
+        padding-bottom: 0;
     }
     #about {
         h2 {

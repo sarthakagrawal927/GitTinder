@@ -30,13 +30,12 @@ const ProfileItem = ({
         {status} {company && <span> at {company}</span>}
       </p>
       {from === "leaderboard" ? (
-        <p className='my-1'>Likes : {likes}</p>
+        <div>
+          <p className='my-1'>Likes : {likes}</p>
+          <p className='my-1'>Number of Posts : {numberOfPosts}</p>
+        </div>
       ) : (
         <p className='my-1'>{location && <span>{location}</span>}</p>
-      )}
-
-      {from === "leaderboard" && (
-        <p className='my-1'>Number of Posts : {numberOfPosts}</p>
       )}
 
       <Link to={`/profile/${_id}`} className='btn btn-primary'>

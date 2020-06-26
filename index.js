@@ -23,6 +23,18 @@ app.use(
     level: 8,
   }),
 );
+
+//Caching
+app.get("/*", function (req, res, next) {
+  if (
+    req.url.indexOf("/images/") === 0 ||
+    req.url.indexOf("/stylesheets/") === 0
+  ) {
+    res.setHeader("Cache-Control", "public, max-age=2592000");
+    res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
+  }
+  next();
+});
 //All routes
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
