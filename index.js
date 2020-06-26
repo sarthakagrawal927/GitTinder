@@ -24,17 +24,6 @@ app.use(
   }),
 );
 
-//Caching
-app.get("/*", function (req, res, next) {
-  if (
-    req.url.indexOf("/images/") === 0 ||
-    req.url.indexOf("/stylesheets/") === 0
-  ) {
-    res.setHeader("Cache-Control", "public, max-age=2592000");
-    res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
-  }
-  next();
-});
 //All routes
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
@@ -45,7 +34,7 @@ app.use("/api/leaderboard", require("./routes/api/leaderboard"));
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
-  app.use(express.static("client/build"));
+  app.use(express.static("client/build", { maxAge: 8640000000 }));
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
