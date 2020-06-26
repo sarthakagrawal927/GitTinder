@@ -1,7 +1,10 @@
 import React from "react";
-import Footer from "./Footer";
+import loadable from "@loadable/component";
+
 import { Link } from "react-router-dom";
-import Emoji from "./Emoji";
+const Emoji = loadable(() => import("../layout/Emoji"));
+const Footer = loadable(() => import("../layout/Footer"));
+
 const aboutus = () => {
   return (
     <div className='aboutus'>

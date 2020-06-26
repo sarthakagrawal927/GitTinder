@@ -15,9 +15,9 @@ import CategoryPosts from "../posts/CategoryPosts";
 import Post from "../post/Post";
 import NotFound from "../layout/NotFound";
 import PrivateRoute from "../routing/PrivateRoute";
-import AboutUs from "../layout/Aboutus";
+import AboutUs from "../aboutus/Aboutus";
 import Leaderboard from "../profiles/Leaderboard";
-import ConversationForm from "../layout/ConversationForm";
+import ConversationForm from "../aboutus/ConversationForm";
 
 const Routes = (props) => {
   return (
