@@ -7,11 +7,9 @@ $danger-color: #dc3545;
 $success-color: #28a745;
 $text-color: #fcfcfc;
 $grey-text-color: #092532;
+$body-color: #edf7f6;
 
 /*Fonts*/
 
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
-$font-text: "PT Sans",
-sans-serif;
-$heading-text: "PT Sans",
-sans-serif;
+$font-text: '"PT Sans","sans-serif"';
+$heading-text: $font-text;

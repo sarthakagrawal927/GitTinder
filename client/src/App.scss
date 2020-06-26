@@ -20,8 +20,8 @@ body {
     font-family: $font-text;
     font-size: 1rem;
     line-height: 1.6;
-    background-color: rgb(245, 245, 245);
-    color: #333;
+    background-color: $body-color;
+    color: $primary-color;
     height: 100vh;
 }
 

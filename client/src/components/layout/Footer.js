@@ -17,7 +17,7 @@ const aboutus = () => {
 
             <a href='mailto:significanthobbies@gmail.com' target='_top'>
               {" "}
-              <i className='fas fa-envelope'></i>
+              <i className='social-icon fas fa-envelope'></i>
             </a>
             <p>© 2020 SignificantHobbies</p>
           </div>
