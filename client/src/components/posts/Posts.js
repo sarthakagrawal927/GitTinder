@@ -7,7 +7,6 @@ import { getPosts } from "../../actions/post";
 
 const PostItem = loadable(() => import("./PostItem"));
 const PostForm = loadable(() => import("./PostForm"));
-
 // const CategoryNavbar = loadable(() => import("../layout/CategoryNavbar"));
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {

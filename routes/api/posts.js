@@ -34,13 +34,14 @@ router.get("/", auth, async (req, res) => {
 // @route    GET api/posts/category/:category
 // @desc     Get all posts of that category
 // @access   Private
-router.get("/categories/:category", auth, async (req, res) => {
+router.get("/categories/:category", async (req, res) => {
   try {
     const posts = await Post.find({ category: req.params.category }).sort({
       date: -1,
     });
     console.log("inside backend");
     console.log(req.params.category);
+    console.log(posts);
     res.json(posts);
   } catch (err) {
     console.error(err.message);
