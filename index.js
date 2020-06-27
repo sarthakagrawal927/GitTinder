@@ -3,12 +3,14 @@ const app = express();
 const connectDB = require("./config/db");
 const compression = require("compression");
 const path = require("path");
+var cors = require("cors");
 
 //Connect Database
 connectDB();
 
 //adding middleware
 app.use(express.json());
+app.use(cors());
 
 //Compression
 const shouldCompress = (req, res) => {
@@ -20,9 +22,20 @@ const shouldCompress = (req, res) => {
 app.use(
   compression({
     filter: shouldCompress,
-    level: 8,
+    level: 9,
   }),
 );
+
+//Securing
+app.use((req, res, next) => {
+  if (req.secure) {
+    // request was via https, so do no special handling
+    next();
+  } else {
+    // request was via http, so redirect to https
+    res.redirect("https://" + req.headers.host + req.url);
+  }
+});
 
 //All routes
 app.use("/api/users", require("./routes/api/users"));
