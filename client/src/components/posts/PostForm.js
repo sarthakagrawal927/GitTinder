@@ -109,7 +109,6 @@ const PostForm = ({ addPost }) => {
           </select>
         </div>
 
-        <br />
         <textarea
           name='text'
           cols='30'
@@ -119,6 +118,7 @@ const PostForm = ({ addPost }) => {
           onChange={(e) => setText(e.target.value)}
           wrap='soft'
         />
+        <br />
         <div id='oc-alert-container'>
           <input type='file' multiple onChange={multipleFileChangedHandler} />
           {selectedFiles && (
@@ -134,7 +134,7 @@ const PostForm = ({ addPost }) => {
           name='imageURL'
           cols='30'
           rows='3'
-          placeholder='[You can add your image URLs here, its recommended as it would save us storage]'
+          placeholder='[Image URL here, you can add yours too]'
           value={imageURL}
           onChange={(e) => setURL(e.target.value)}
           wrap='soft'
