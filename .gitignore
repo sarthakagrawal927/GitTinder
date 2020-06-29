@@ -1,5 +1,8 @@
 node_modules/
 client/node_modules
 config/dev.js
-.vscode/
+.vscode/settings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/GitTinder/v16/.suo
 client/build
