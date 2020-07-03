@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../../middleware/auth");
+const auth = require("../middleware/auth");
 
-const Post = require("../../models/Post");
-const Profile = require("../../models/Profile");
-const checkObjectId = require("../../middleware/checkObjectId");
+const Post = require("../models/Post");
+const Profile = require("../models/Profile");
+const checkObjectId = require("../middleware/checkObjectId");
 
 // @route    DELETE api/posts/:id
 // @desc     Delete a post

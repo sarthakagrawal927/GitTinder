@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import loadable from "@loadable/component";
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
+import DashboardActions from "./DashboardActions";
 
-const DashboardActions = loadable(() => import("./DashboardActions"));
 const Experience = loadable(() => import("./Experience"));
 const Education = loadable(() => import("./Education"));
 const Dashboard = ({

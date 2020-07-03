@@ -25,12 +25,12 @@ app.use(
 );
 
 //All routes
-app.use("/api/users", require("./routes/api/users"));
-app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/posts", require("./routes/api/posts"));
-app.use("/api/profile", require("./routes/api/profile"));
-app.use("/api/posts", require("./routes/api/postfeatures"));
-app.use("/api/leaderboard", require("./routes/api/leaderboard"));
+app.use("/users", require("./routes/users"));
+app.use("/auth", require("./routes/auth"));
+app.use("/posts", require("./routes/posts"));
+app.use("/profile", require("./routes/profile"));
+app.use("/posts", require("./routes/postfeatures"));
+app.use("/leaderboard", require("./routes/leaderboard"));
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder

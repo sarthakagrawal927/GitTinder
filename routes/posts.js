@@ -1,24 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
-const auth = require("../../middleware/auth");
+const auth = require("../middleware/auth");
 
-const Post = require("../../models/Post");
-const User = require("../../models/User");
-const Profile = require("../../models/Profile");
-const checkObjectId = require("../../middleware/checkObjectId");
+const Post = require("../models/Post");
+const User = require("../models/User");
+const Profile = require("../models/Profile");
+const checkObjectId = require("../middleware/checkObjectId");
 
 const aws = require("aws-sdk");
 const multerS3 = require("multer-s3");
 const multer = require("multer");
 const path = require("path");
 
-const keys = require("../../config/keys");
+const keys = require("../config/keys");
 const AWS_accessKeyId = keys.accessKeyId;
 const AWS_secretAccessKey = keys.secretAccessKey;
 const AWS_Bucket = keys.Bucket;
 
-// @route    GET api/posts
+// @route    GET posts
 // @desc     Get all posts
 // @access   Private
 router.get("/", auth, async (req, res) => {
@@ -31,7 +31,7 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// @route    GET api/posts/category/:category
+// @route    GET posts/category/:category
 // @desc     Get all posts of that category
 // @access   Private
 router.get("/categories/:category", async (req, res) => {
@@ -49,12 +49,13 @@ router.get("/categories/:category", async (req, res) => {
   }
 });
 
-// @route    GET api/posts/:id
+// @route    GET posts/:id
 // @desc     Get post by ID
 // @access   Private
 router.get("/:id", [auth, checkObjectId("id")], async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+    // if (!post) return res.status(404).json({ msg: "Post not found" });
     res.json(post);
   } catch (err) {
     console.error(err.message);
@@ -62,7 +63,7 @@ router.get("/:id", [auth, checkObjectId("id")], async (req, res) => {
   }
 });
 
-// @route    POST api/posts/comment/:id
+// @route    POST posts/comment/:id
 // @desc     Comment on a post
 // @access   Private
 router.post(
@@ -100,7 +101,7 @@ router.post(
   },
 );
 
-// @route    DELETE api/posts/comment/:id/:comment_id
+// @route    DELETE posts/comment/:id/:comment_id
 // @desc     Delete comment
 // @access   Private
 router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
@@ -175,7 +176,7 @@ const uploadsBusinessGallery = multer({
     checkFileType(file, cb);
   },
 }).array("galleryImage", maxUploads);
-// @route    POST api/posts
+// @route    POST posts
 // @desc     Create a post
 // @access   Private
 router.post(
@@ -216,7 +217,7 @@ router.post(
   },
 );
 
-// @route    POST api/posts/upload/multiple_image_upload
+// @route    POST posts/upload/multiple_image_upload
 // @desc     Add images to a post
 // @access   Private
 router.post("/upload/multiple_image_upload", auth, (req, res) => {

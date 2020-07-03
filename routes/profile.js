@@ -1,16 +1,16 @@
 const express = require("express");
 const axios = require("axios");
-const keys = require("../../config/keys");
+const keys = require("../config/keys");
 const router = express.Router();
-const auth = require("../../middleware/auth");
+const auth = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
 // bring in normalize to give us a proper url, regardless of what user entered
 const normalize = require("normalize-url");
-const checkObjectId = require("../../middleware/checkObjectId");
+const checkObjectId = require("../middleware/checkObjectId");
 
-const Profile = require("../../models/Profile");
-const User = require("../../models/User");
-const Post = require("../../models/Post");
+const Profile = require("../models/Profile");
+const User = require("../models/User");
+const Post = require("../models/Post");
 
 const aws = require("aws-sdk");
 const multerS3 = require("multer-s3");
@@ -84,7 +84,10 @@ router.post(
       gender,
       company,
       location,
-      website: website === "" ? "" : normalize(website, { forceHttps: true }),
+      website:
+        website && website !== ""
+          ? normalize(website, { forceHttps: true })
+          : "",
       bio,
       skills: Array.isArray(skills)
         ? skills
