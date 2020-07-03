@@ -29,6 +29,7 @@ app.use("/users", require("./routes/users"));
 app.use("/auth", require("./routes/auth"));
 app.use("/posts", require("./routes/posts"));
 app.use("/profile", require("./routes/profile"));
+app.use("/profile", require("./routes/profile_stats"));
 app.use("/posts", require("./routes/postfeatures"));
 app.use("/leaderboard", require("./routes/leaderboard"));
 // Serve static assets in production

@@ -46,7 +46,7 @@ const ProfileForm = ({
     if (selectedFile) {
       data.append("profileImage", selectedFile, selectedFile.name);
       axios
-        .post("/api/profile/upload/profile-img-upload", data, {
+        .post("/profile/upload/profile-img-upload", data, {
           headers: {
             accept: "application/json",
             "Accept-Language": "en-US,en;q=0.8",
@@ -94,7 +94,7 @@ const ProfileForm = ({
     setTimeout(function () {
       $(alertEl).fadeOut("slow");
       $(alertEl).remove();
-    }, 3000);
+    }, 2000);
   };
 
   useEffect(() => {

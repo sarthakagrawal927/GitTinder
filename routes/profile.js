@@ -1,5 +1,4 @@
 const express = require("express");
-const axios = require("axios");
 const keys = require("../config/keys");
 const router = express.Router();
 const auth = require("../middleware/auth");
@@ -126,7 +125,7 @@ router.post(
   },
 );
 
-// @route    GET api/profile
+// @route    GET profile
 // @desc     Get all profiles
 // @access   Public
 router.get("/", async (req, res) => {
@@ -139,7 +138,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// @route    GET api/profile/user/:user_id
+// @route    GET profile/user/:user_id
 // @desc     Get profile by user ID
 // @access   Public
 router.get(
@@ -161,7 +160,7 @@ router.get(
   },
 );
 
-// @route    GET api/profile/:user_id/posts
+// @route    GET profile/:user_id/posts
 // @desc     Get profile by user ID
 // @access   Public
 router.get(
@@ -185,7 +184,7 @@ router.get(
 
 router.use("/user/:user_id/posts", require("./postfeatures"));
 
-// @route    DELETE api/profile
+// @route    DELETE profile
 // @desc     Delete profile, user & posts
 // @access   Private
 router.delete("/", auth, async (req, res) => {
@@ -201,159 +200,6 @@ router.delete("/", auth, async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
-  }
-});
-
-// @route    PUT api/profile/experience
-// @desc     Add profile experience
-// @access   Private
-router.put(
-  "/experience",
-  [
-    auth,
-    [
-      check("title", "Title is required").not().isEmpty(),
-      check("company", "Company is required").not().isEmpty(),
-      check("from", "From date is required and needs to be from the past")
-        .not()
-        .isEmpty()
-        .custom((value, { req }) => (req.body.to ? value < req.body.to : true)),
-    ],
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const {
-      title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
-
-    const newExp = {
-      title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
-    };
-
-    try {
-      const profile = await Profile.findOne({ user: req.user.id });
-
-      profile.experience.unshift(newExp);
-
-      await profile.save();
-
-      res.json(profile);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
-    }
-  },
-);
-
-// @route    DELETE api/profile/experience/:exp_id
-// @desc     Delete experience from profile
-// @access   Private
-
-router.delete("/experience/:exp_id", auth, async (req, res) => {
-  try {
-    const foundProfile = await Profile.findOne({ user: req.user.id });
-
-    foundProfile.experience = foundProfile.experience.filter(
-      (exp) => exp._id.toString() !== req.params.exp_id,
-    );
-
-    await foundProfile.save();
-    return res.status(200).json(foundProfile);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ msg: "Server error" });
-  }
-});
-
-// @route    PUT api/profile/education
-// @desc     Add profile education
-// @access   Private
-router.put(
-  "/education",
-  [
-    auth,
-    [
-      check("school", "School is required").not().isEmpty(),
-      check("degree", "Degree is required").not().isEmpty(),
-      check("fieldofstudy", "Field of study is required").not().isEmpty(),
-      check("from", "From date is required and needs to be from the past")
-        .not()
-        .isEmpty()
-        .custom((value, { req }) => (req.body.to ? value < req.body.to : true)),
-    ],
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const {
-      school,
-      degree,
-      fieldofstudy,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
-
-    const newEdu = {
-      school,
-      degree,
-      fieldofstudy,
-      from,
-      to,
-      current,
-      description,
-    };
-
-    try {
-      const profile = await Profile.findOne({ user: req.user.id });
-
-      profile.education.unshift(newEdu);
-
-      await profile.save();
-
-      res.json(profile);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
-    }
-  },
-);
-
-// @route    DELETE api/profile/education/:edu_id
-// @desc     Delete education from profile
-// @access   Private
-
-router.delete("/education/:edu_id", auth, async (req, res) => {
-  try {
-    const foundProfile = await Profile.findOne({ user: req.user.id });
-    foundProfile.education = foundProfile.education.filter(
-      (edu) => edu._id.toString() !== req.params.edu_id,
-    );
-    await foundProfile.save();
-    return res.status(200).json(foundProfile);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ msg: "Server error" });
   }
 });
 
@@ -391,20 +237,19 @@ function checkFileType(file, cb) {
 }
 
 /**
- * @route POST /api/upload/business-img-upload
+ * @route POST /upload/business-img-upload
  * @desc Upload post image
  * @access public
  */
-router.post("/upload/profile-img-upload", auth, (req, res) => {
+router.post("/upload/profile-img-upload", (req, res) => {
   profileImgUpload(req, res, async (error) => {
     console.log("Image uploaded ", req.file.location);
-
     if (error) {
       console.log("errors", error);
       res.json({ error: error });
     } else if (req.file === undefined) {
       // File not found
-      //console.log("Error: No File Selected!");
+      console.log("Error: No File Selected!");
       res.json("Error: No File Selected");
     }
     //success

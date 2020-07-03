@@ -220,7 +220,7 @@ router.post(
 // @route    POST posts/upload/multiple_image_upload
 // @desc     Add images to a post
 // @access   Private
-router.post("/upload/multiple_image_upload", auth, (req, res) => {
+router.post("/upload/multiple_image_upload", (req, res) => {
   uploadsBusinessGallery(req, res, (error) => {
     console.log("files", req.files);
     if (error) {

@@ -28,7 +28,7 @@ const PostForm = ({ addPost }) => {
     setTimeout(function () {
       $(alertEl).fadeOut("slow");
       $(alertEl).remove();
-    }, 3000);
+    }, 2000);
   };
   const multipleFileUploadHandler = (event) => {
     const data = new FormData();
@@ -55,7 +55,7 @@ const PostForm = ({ addPost }) => {
                 ocShowAlert("Max 4 images allowed", "red");
               } else {
                 // If not the given ile type
-                console.log(response);
+                console.log(response.data);
                 ocShowAlert(response.data.error, "red");
               }
             } else {
