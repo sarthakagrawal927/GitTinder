@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/post";
 import axios from "axios";
-import $ from "jquery";
+import ocShowAlert from "../layout/ocshowAlert";
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState("");
 
@@ -17,19 +17,6 @@ const PostForm = ({ addPost }) => {
     setSelectedFiles(event.target.files);
   };
 
-  const ocShowAlert = (message, background = "#3089cf") => {
-    let alertContainer = document.querySelector("#oc-alert-container"),
-      alertEl = document.createElement("div"),
-      textNode = document.createTextNode(message);
-    alertEl.setAttribute("class", "oc-alert-pop-up");
-    $(alertEl).css("background", background);
-    alertEl.appendChild(textNode);
-    alertContainer.appendChild(alertEl);
-    setTimeout(function () {
-      $(alertEl).fadeOut("slow");
-      $(alertEl).remove();
-    }, 2000);
-  };
   const multipleFileUploadHandler = (event) => {
     const data = new FormData();
     if (selectedFiles) {
@@ -61,7 +48,6 @@ const PostForm = ({ addPost }) => {
             } else {
               // Success
               let fileName = response.data;
-              console.log("react fileNames", fileName.locationArray);
               setURL(fileName.locationArray);
               console.log(fileName.locationArray);
               ocShowAlert("File Uploaded", "#3089cf");
@@ -124,7 +110,6 @@ const PostForm = ({ addPost }) => {
           <input type='file' multiple onChange={multipleFileChangedHandler} />
           {selectedFiles && (
             <button
-              type='button'
               className='btn btn-info'
               onClick={multipleFileUploadHandler}>
               Upload!

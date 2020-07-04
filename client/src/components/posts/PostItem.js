@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 import female_image from "../../img/female.webp";
 import male_image from "../../img/male.webp";
-
 const PostItem = ({
   addLike,
   removeLike,
@@ -77,7 +76,9 @@ const PostItem = ({
             <i className='fas fa-thumbs-down' />
           </button>
           <Link to={`/posts/${_id}`} className='btn btn-primary'>
-            Comments{""}
+            <span className='comment-count'>{comments.length}</span>{" "}
+            {comments.length === 1 ? "Comment" : "Comments"}
+            {""}
           </Link>
           {!auth.loading && user === auth.user._id && (
             <button
