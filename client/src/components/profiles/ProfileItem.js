@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import male_image from "../../img/male.webp";
 import female_image from "../../img/female.webp";
-
+import LazyLoad from "react-lazyload";
 const ProfileItem = ({
   profile: {
     user: { _id, name },
@@ -19,11 +19,16 @@ const ProfileItem = ({
   from,
 }) => (
   <div className='profile'>
-    <img
-      src={displayPictureURL || (gender === "Male" ? male_image : female_image)}
-      alt='DP'
-      className='round-img'
-    />
+    <LazyLoad once='true'>
+      <img
+        src={
+          displayPictureURL || (gender === "Male" ? male_image : female_image)
+        }
+        alt='DP'
+        className='round-img'
+      />
+    </LazyLoad>
+
     <div>
       <h2>{name}</h2>
       <p>
@@ -56,4 +61,4 @@ ProfileItem.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
-export default ProfileItem;
+export default React.memo(ProfileItem);

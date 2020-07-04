@@ -354,5 +354,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-  withRouter(ProfileForm),
+  withRouter(React.memo(ProfileForm)),
 );

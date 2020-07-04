@@ -1,15 +1,14 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, lazy, Suspense } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import loadable from "@loadable/component";
 
 import { getPost } from "../../actions/post";
 
-const CommentForm = loadable(() => import("../post/CommentForm"));
-const CommentItem = loadable(() => import("../post/CommentItem"));
-const Spinner = loadable(() => import("../layout/Spinner"));
-const PostItem = loadable(() => import("../posts/PostItem"));
+const CommentForm = lazy(() => import("../post/CommentForm"));
+const CommentItem = lazy(() => import("../post/CommentItem"));
+const Spinner = lazy(() => import("../layout/Spinner"));
+const PostItem = lazy(() => import("../posts/PostItem"));
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
@@ -17,17 +16,29 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
   }, [getPost, match.params.id]);
 
   return loading || post === null ? (
-    <Spinner />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Spinner />
+    </Suspense>
   ) : (
     <Fragment>
       <Link to='/posts' className='btn'>
         Back To Posts
       </Link>
-      <PostItem post={post} showActions={false} />
-      <CommentForm postId={post._id} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <PostItem post={post} showActions={false} />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <CommentForm postId={post._id} />
+      </Suspense>
       <div className='comments'>
         {post.comments.map((comment) => (
-          <CommentItem key={comment._id} comment={comment} postId={post._id} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <CommentItem
+              key={comment._id}
+              comment={comment}
+              postId={post._id}
+            />
+          </Suspense>
         ))}
       </div>
     </Fragment>
@@ -43,4 +54,4 @@ const mapStateToProps = (state) => ({
   post: state.post,
 });
 
-export default connect(mapStateToProps, { getPost })(Post);
+export default connect(mapStateToProps, { getPost })(React.memo(Post));

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import { deleteComment } from "../../actions/post";
+import LazyLoad from "react-lazyload";
 import unisex_image from "../../img/unisex.webp";
 
 const CommentItem = ({
@@ -15,7 +16,9 @@ const CommentItem = ({
   <div className='post bg-white p-1 my-1'>
     <div>
       <Link to={`/profile/${user}`}>
-        <img className='round-img' src={unisex_image} alt='' />
+        <LazyLoad once='true'>
+          <img className='round-img' src={unisex_image} alt='DP' />
+        </LazyLoad>
         <h4>{name}</h4>
       </Link>
     </div>
@@ -47,4 +50,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { deleteComment })(CommentItem);
+export default connect(mapStateToProps, { deleteComment })(
+  React.memo(CommentItem),
+);

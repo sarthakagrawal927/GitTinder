@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import LazyLoad from "react-lazyload";
+
 import male_image from "../../img/male.webp";
 import female_image from "../../img/female.webp";
 const ProfileTop = ({
@@ -16,13 +18,16 @@ const ProfileTop = ({
 }) => {
   return (
     <div className='profile-top bg-primary p-2'>
-      <img
-        className='round-img'
-        src={
-          displayPictureURL || (gender === "Male" ? male_image : female_image)
-        }
-        alt=''
-      />
+      <LazyLoad once='true'>
+        <img
+          className='round-img'
+          src={
+            displayPictureURL || (gender === "Male" ? male_image : female_image)
+          }
+          alt=''
+        />
+      </LazyLoad>
+
       <h1 className='large'>{name}</h1>
       <p className='lead'>
         {status} {company && <span> at {company}</span>}
@@ -73,4 +78,4 @@ ProfileTop.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
-export default ProfileTop;
+export default React.memo(ProfileTop);

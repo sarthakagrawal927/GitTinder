@@ -1,53 +1,53 @@
 /* Posts Page */
 
 .post-form .post-form-header {
-    margin: 3rem;
-    background: $primary-color;
-    padding: 0.5rem;
+  margin: 3rem;
+  background: $primary-color;
+  padding: 0.5rem;
 }
 
 .post {
-    color: $light-color;
-    margin: 2rem;
-    white-space: pre-line;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-gap: 1rem;
-    border-radius: 2rem;
-    background-color: $dark-color;
-    align-items: center;
-    p {
-        color: $primary-color;
-    }
-    .comment-count {
-        color: $danger-color;
-    }
+  color: $light-color;
+  margin: 2rem;
+  white-space: pre-line;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 1rem;
+  border-radius: 2rem;
+  background-color: $dark-color;
+  align-items: center;
+  p {
+    color: $primary-color;
+  }
+  .comment-count {
+    color: $danger-color;
+  }
 }
 
-.post>div:first-child {
-    text-align: center;
+.post > div:first-child {
+  text-align: center;
 }
 
 $memeWidth: 25rem;
 $memeHeight: 25rem;
 .meme {
-    max-width: $memeWidth;
-    max-height: $memeHeight;
+  max-width: $memeWidth;
+  max-height: $memeHeight;
 }
 
 $avatarDiameter: 5rem;
 .post .round-img {
-    width: $avatarDiameter;
-    height: $avatarDiameter;
+  width: $avatarDiameter;
+  height: $avatarDiameter;
 }
 
 div.post-images {
-    text-align: center;
+  text-align: center;
 }
 
 .post .post-date {
-    color: $grey-text-color;
-    font-size: 0.7rem;
-    margin-bottom: 0.8rem;
-    align-content: center;
+  color: $grey-text-color;
+  font-size: 0.7rem;
+  margin-bottom: 0.8rem;
+  align-content: center;
 }

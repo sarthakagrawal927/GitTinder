@@ -1,7 +1,7 @@
 import React from "react";
 
 const AboutGit = () => (
-  <section id='about'>
+  <React.Fragment>
     <h2>About GitTinder</h2>
     <div className='row'>
       <div className='col-lg-4 why'>
@@ -52,7 +52,7 @@ const AboutGit = () => (
         </p>
       </div>
     </div>
-  </section>
+  </React.Fragment>
 );
 
-export default AboutGit;
+export default React.memo(AboutGit);

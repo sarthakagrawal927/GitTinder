@@ -1,8 +1,9 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, lazy, Suspense } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProfilePosts } from "../../actions/profile";
-import PostItem from "./../posts/PostItem";
+
+const PostItem = lazy(() => import("./../posts/PostItem"));
 
 const ProfilePosts = ({ userID, getProfilePosts, posts }) => {
   useEffect(() => {
@@ -15,7 +16,9 @@ const ProfilePosts = ({ userID, getProfilePosts, posts }) => {
 
       <div className='posts'>
         {posts.map((post) => (
-          <PostItem key={post._id} post={post} />
+          <Suspense fallback={<div>loading...</div>}>
+            <PostItem key={post._id} post={post} />
+          </Suspense>
         ))}
       </div>
     </Fragment>
@@ -32,4 +35,6 @@ const mapStateToProps = (state) => ({
   posts: state.profile.posts,
 });
 
-export default connect(mapStateToProps, { getProfilePosts })(ProfilePosts);
+export default connect(mapStateToProps, { getProfilePosts })(
+  React.memo(ProfilePosts),
+);

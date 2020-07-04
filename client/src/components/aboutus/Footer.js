@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-const aboutus = () => {
+const Footer = () => {
   return (
     <Fragment>
       {" "}
@@ -27,4 +27,4 @@ const aboutus = () => {
   );
 };
 
-export default aboutus;
+export default React.memo(Footer);

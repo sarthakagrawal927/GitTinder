@@ -1,76 +1,76 @@
 .aboutus {
-    @import "node_modules/bootstrap/scss/bootstrap";
-    font-family: $font-text;
+  @import "node_modules/bootstrap/scss/bootstrap";
+  font-family: $font-text;
+  padding: 0;
+  margin: 0;
+  a {
+    color: $dark-color;
+  }
+  a:hover {
+    text-decoration: none;
+    color: $dark-color;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: $heading-text;
+  }
+  p {
+    color: $primary-color;
+  }
+  #title {
+    background-color: #2fc4b2;
+    color: $body-color;
+  }
+  .container-fluid {
+    padding: 3% 15% 7%;
+  }
+  /* features section */
+  #features {
+    padding: 6vh 0;
+    text-align: center;
+  }
+  .features-column {
+    padding: 3% 2%;
+  }
+  .card-header {
+    background-color: $primary-color;
+    color: $light-color;
+  }
+  .card-body {
+    background-color: $light-color;
+  }
+  /* Footer section */
+  #footer {
+    margin-top: 6vh;
+    margin-bottom: 0vh;
+    text-align: center;
     padding: 0;
-    margin: 0;
-    a {
-        color: $dark-color;
+  }
+  .social-icon {
+    margin: 0.5vw;
+    color: $grey-text-color;
+  }
+  .container-fluid {
+    padding-bottom: 0;
+  }
+  #about {
+    h2 {
+      padding-left: 0;
+      margin-left: -5vw;
+      color: $primary-color;
     }
-    a:hover {
-        text-decoration: none;
-        color: $dark-color;
+    .row {
+      padding: 0 2vw;
     }
-    h1,
-    h2,
-    h3 {
-        font-family: $heading-text;
+    h2 {
+      padding: 1vh 3vw;
     }
     p {
-        color: $primary-color;
+      padding: 2vw;
     }
-    #title {
-        background-color: #2fc4b2;
-        color: $body-color;
+    div {
+      align-items: center;
     }
-    .container-fluid {
-        padding: 3% 15% 7%;
-    }
-    /* Pricing section */
-    #pricing {
-        padding: 6vh 0;
-        text-align: center;
-    }
-    .pricing-column {
-        padding: 3% 2%;
-    }
-    .card-header {
-        background-color: $primary-color;
-        color: $light-color;
-    }
-    .card-body {
-        background-color: $light-color;
-    }
-    /* Footer section */
-    #footer {
-        margin-top: 6vh;
-        margin-bottom: 0vh;
-        text-align: center;
-        padding: 0;
-    }
-    .social-icon {
-        margin: 0.5vw;
-        color: $grey-text-color;
-    }
-    .container-fluid {
-        padding-bottom: 0;
-    }
-    #about {
-        h2 {
-            padding-left: 0;
-            margin-left: -5vw;
-            color: $primary-color;
-        }
-        .row {
-            padding: 0 2vw;
-        }
-        h2 {
-            padding: 1vh 3vw;
-        }
-        p {
-            padding: 2vw;
-        }
-        div {
-            align-items: center;
-        }
-    }
+  }
 }

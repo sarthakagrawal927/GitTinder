@@ -1,7 +1,7 @@
 import React from "react";
 import { ConversationalForm } from "conversational-form";
 
-export default class MyForm extends React.Component {
+export default class MyForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.formFields = [

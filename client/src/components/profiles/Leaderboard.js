@@ -1,12 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, lazy, Suspense } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import loadable from "@loadable/component";
 
 import { getLeaderboard } from "../../actions/profile";
 
-const Spinner = loadable(() => import("../layout/Spinner"));
-const ProfileItem = loadable(() => import("./ProfileItem"));
+const Spinner = lazy(() => import("../layout/Spinner"));
+const ProfileItem = lazy(() => import("./ProfileItem"));
 
 const Profiles = ({ getLeaderboard, profile: { profiles, loading } }) => {
   useEffect(() => {
@@ -16,18 +15,22 @@ const Profiles = ({ getLeaderboard, profile: { profiles, loading } }) => {
   return (
     <Fragment>
       {loading ? (
-        <Spinner />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Spinner />
+        </Suspense>
       ) : (
         <Fragment>
           <h1 className='large dev-heading'>Leaderboard</h1>
           <div className='profiles'>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
-                <ProfileItem
-                  key={profile._id}
-                  profile={profile}
-                  from='leaderboard'
-                />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <ProfileItem
+                    key={profile._id}
+                    profile={profile}
+                    from='leaderboard'
+                  />
+                </Suspense>
               ))
             ) : (
               <h4>No profiles found...</h4>
@@ -48,4 +51,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getLeaderboard })(Profiles);
+export default connect(mapStateToProps, { getLeaderboard })(
+  React.memo(Profiles),
+);

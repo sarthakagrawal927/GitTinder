@@ -1,13 +1,12 @@
-import React, { Fragment, useEffect } from "react";
+import React, { lazy, Suspense, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import loadable from "@loadable/component";
 
 import { getPosts } from "../../actions/post";
 
-const PostItem = loadable(() => import("./PostItem"));
-const PostForm = loadable(() => import("./PostForm"));
-// const CategoryNavbar = loadable(() => import("../layout/CategoryNavbar"));
+const PostItem = lazy(() => import("./PostItem"));
+const PostForm = lazy(() => import("./PostForm"));
+// const CategoryNavbar = lazy(() => import("../layout/CategoryNavbar"));
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
     getPosts();
@@ -19,14 +18,16 @@ const Posts = ({ getPosts, post: { posts } }) => {
       <p className='lead'>
         <i className='fas fa-user' /> Welcome to the community
       </p>
-      <PostForm />
-      {/* <CategoryNavbar /> */}
+      <Suspense fallback={<div>Loading....</div>}>
+        <PostForm />
+        {/* <CategoryNavbar /> */}
 
-      <div className='posts'>
-        {posts.map((post) => (
-          <PostItem key={post._id} post={post} />
-        ))}
-      </div>
+        <div className='posts'>
+          {posts.map((post) => (
+            <PostItem key={post._id} post={post} />
+          ))}
+        </div>
+      </Suspense>
     </Fragment>
   );
 };
@@ -40,4 +41,4 @@ const mapStateToProps = (state) => ({
   post: state.post,
 });
 
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default connect(mapStateToProps, { getPosts })(React.memo(Posts));

@@ -1,11 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+import LazyLoad from "react-lazyload";
 import { connect } from "react-redux";
+
 import { addLike, removeLike, deletePost } from "../../actions/post";
-import male_image from "../../img/male.webp";
 import female_image from "../../img/female.webp";
+import male_image from "../../img/male.webp";
 
 const PostItem = ({
   addLike,
@@ -30,11 +32,14 @@ const PostItem = ({
   <div className='post p-1 my-1'>
     <div>
       <Link to={`/profile/${user}`}>
-        <img
-          className='round-img'
-          src={userDP || (userGender === "Male" ? male_image : female_image)}
-          alt='DP'
-        />
+        <LazyLoad once='true'>
+          <img
+            className='round-img'
+            src={userDP || (userGender === "Male" ? male_image : female_image)}
+            alt='DP'
+          />
+        </LazyLoad>
+
         <h4>{name}</h4>
       </Link>
     </div>
@@ -44,7 +49,9 @@ const PostItem = ({
       <div className='post-images'>
         {imageURL.map((imageURL) => (
           <a key={imageURL} href={imageURL}>
-            <img className='meme' src={imageURL} alt='meme' />
+            <LazyLoad once='true'>
+              <img className='meme' src={imageURL} alt='meme' />
+            </LazyLoad>
           </a>
         ))}
       </div>
@@ -55,7 +62,7 @@ const PostItem = ({
       </p>
 
       {showActions && (
-        <Fragment>
+        <div>
           <button
             onClick={() => addLike(_id)}
             type='button'
@@ -80,7 +87,7 @@ const PostItem = ({
               <i className='fas fa-times' />
             </button>
           )}
-        </Fragment>
+        </div>
       )}
     </div>
   </div>
@@ -104,5 +111,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { addLike, removeLike, deletePost })(
-  PostItem,
+  React.memo(PostItem),
 );

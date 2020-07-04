@@ -1,7 +1,7 @@
 import React from "react";
 
 const AboutSH = () => (
-  <section id='about'>
+  <React.Fragment>
     <h2>SignificantHobbies - The Parent Company</h2>
     <div className='row'>
       <div className='col-lg-4 why'>
@@ -29,7 +29,7 @@ const AboutSH = () => (
         </p>
       </div>
     </div>
-  </section>
+  </React.Fragment>
 );
 
-export default AboutSH;
+export default React.memo(AboutSH);

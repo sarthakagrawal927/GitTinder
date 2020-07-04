@@ -8,4 +8,4 @@ const Emoji = (props) => (
     {props.symbol}
   </span>
 );
-export default Emoji;
+export default React.memo(Emoji);

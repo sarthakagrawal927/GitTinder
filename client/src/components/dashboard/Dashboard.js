@@ -1,13 +1,12 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import loadable from "@loadable/component";
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
-import DashboardActions from "./DashboardActions";
 
-const Experience = loadable(() => import("./Experience"));
-const Education = loadable(() => import("./Education"));
+const DashboardActions = lazy(() => import("./DashboardActions"));
+const Experience = lazy(() => import("./Experience"));
+const Education = lazy(() => import("./Education"));
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
@@ -26,9 +25,17 @@ const Dashboard = ({
       </p>
       {profile !== null ? (
         <Fragment>
-          <DashboardActions />
-          <Experience experience={profile.experience} />
-          <Education education={profile.education} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <DashboardActions />
+          </Suspense>
+
+          <Suspense fallback={<div>Loading...</div>}>
+            <Experience experience={profile.experience} />
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            {" "}
+            <Education education={profile.education} />
+          </Suspense>
 
           <div className='my-2'>
             <button className='btn btn-danger' onClick={() => deleteAccount()}>
@@ -61,5 +68,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
-  Dashboard,
+  React.memo(Dashboard),
 );

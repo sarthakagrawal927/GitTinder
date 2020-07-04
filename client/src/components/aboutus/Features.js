@@ -1,10 +1,10 @@
 import React from "react";
 
 const Features = () => (
-  <section id='pricing'>
+  <React.Fragment>
     <h2>Planned Products & Features</h2>
     <div className='row'>
-      <div className='pricing-column col-lg-6'>
+      <div className='features-column col-lg-6'>
         <div className='card'>
           <div className='card-header'>
             <h3>GitTinder</h3>
@@ -17,7 +17,7 @@ const Features = () => (
           </div>
         </div>
       </div>
-      <div className='pricing-column col-lg-6 col-md-6'>
+      <div className='features-column col-lg-6 col-md-6'>
         <div className='card'>
           <div className='card-header'>
             <h3>Memenza </h3>
@@ -30,7 +30,7 @@ const Features = () => (
           </div>
         </div>
       </div>
-      <div className='pricing-column col-lg-6 col-md-6'>
+      <div className='features-column col-lg-6 col-md-6'>
         <div className='card'>
           <div className='card-header'>
             <h3>FlashSurvey</h3>
@@ -42,7 +42,7 @@ const Features = () => (
           </div>
         </div>
       </div>
-      <div className='pricing-column col-lg-6'>
+      <div className='features-column col-lg-6'>
         <div className='card'>
           <div className='card-header'>
             <h3>Blog</h3>
@@ -55,7 +55,7 @@ const Features = () => (
         </div>
       </div>
     </div>
-  </section>
+  </React.Fragment>
 );
 
-export default Features;
+export default React.memo(Features);

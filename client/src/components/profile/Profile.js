@@ -1,17 +1,16 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, lazy, Suspense } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import loadable from "@loadable/component";
 
 import { getProfileById } from "../../actions/profile";
 
-const ProfileTop = loadable(() => import("./ProfileTop"));
-const ProfileAbout = loadable(() => import("./ProfileAbout"));
-const ProfileExperience = loadable(() => import("./ProfileExperience"));
-const ProfileEducation = loadable(() => import("./ProfileEducation"));
-const ProfilePosts = loadable(() => import("./ProfilePosts"));
-const Spinner = loadable(() => import("../layout/Spinner"));
+const ProfileTop = lazy(() => import("./ProfileTop"));
+const ProfileAbout = lazy(() => import("./ProfileAbout"));
+const ProfileExperience = lazy(() => import("./ProfileExperience"));
+const ProfileEducation = lazy(() => import("./ProfileEducation"));
+const ProfilePosts = lazy(() => import("./ProfilePosts"));
+const Spinner = lazy(() => import("../layout/Spinner"));
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
@@ -21,7 +20,9 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   return (
     <Fragment>
       {profile === null ? (
-        <Spinner />
+        <Suspense fallback={<div>loading.</div>}>
+          <Spinner />
+        </Suspense>
       ) : (
         <Fragment>
           <Link to='/profiles' className='btn btn-light'>
@@ -35,17 +36,26 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               </Link>
             )}
           <div className='profile-grid my-1'>
-            <ProfileTop profile={profile} />
-            <ProfileAbout profile={profile} />
+            <Suspense fallback={<div>loading.</div>}>
+              <ProfileTop profile={profile} />
+            </Suspense>
+
+            <Suspense fallback={<div>loading.</div>}>
+              <ProfileAbout profile={profile} />
+            </Suspense>
+
             <div className='profile-exp bg-white p-2'>
               <h2 className='text-primary'>Experience</h2>
               {profile.experience.length > 0 ? (
                 <Fragment>
                   {profile.experience.map((experience) => (
-                    <ProfileExperience
-                      key={experience._id}
-                      experience={experience}
-                    />
+                    <Suspense fallback={<div>loading.</div>}>
+                      {" "}
+                      <ProfileExperience
+                        key={experience._id}
+                        experience={experience}
+                      />
+                    </Suspense>
                   ))}
                 </Fragment>
               ) : (
@@ -58,10 +68,13 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               {profile.education.length > 0 ? (
                 <Fragment>
                   {profile.education.map((education) => (
-                    <ProfileEducation
-                      key={education._id}
-                      education={education}
-                    />
+                    <Suspense fallback={<div>loading.</div>}>
+                      {" "}
+                      <ProfileEducation
+                        key={education._id}
+                        education={education}
+                      />
+                    </Suspense>
                   ))}
                 </Fragment>
               ) : (
@@ -69,7 +82,12 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div>
           </div>
-          {profile && <ProfilePosts userID={match.params.id} />}
+
+          {profile && (
+            <Suspense fallback={<div>loading.</div>}>
+              <ProfilePosts userID={match.params.id} />
+            </Suspense>
+          )}
         </Fragment>
       )}
     </Fragment>
@@ -87,4 +105,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getProfileById })(Profile);
+export default connect(mapStateToProps, { getProfileById })(
+  React.memo(Profile),
+);
