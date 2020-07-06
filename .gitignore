@@ -6,3 +6,7 @@ config/dev.js
 .vs/VSWorkspaceState.json
 .vs/GitTinder/v16/.suo
 client/build
+/routes/blog.js
+/routes/poll.js
+/models/Blog.js
+/models/Poll.js

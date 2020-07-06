@@ -198,8 +198,6 @@ router.post(
         name: user.name,
         user: req.user.id,
         userDP: profile.displayPictureURL,
-        userBio: profile.bio,
-        userGender: profile.gender,
         imageURL: req.body.imageURL,
         category: req.body.category,
       });

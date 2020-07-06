@@ -8,12 +8,6 @@ const PostSchema = new Schema({
   userDP: {
     type: String,
   },
-  userBio: {
-    type: String,
-  },
-  userGender: {
-    type: String,
-  },
   text: {
     type: String,
     required: true,

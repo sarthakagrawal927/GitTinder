@@ -25,6 +25,10 @@ const App = () => {
         title='GitTinder'
         meta={[
           {
+            name: "theme-color",
+            content: "#317EFB",
+          },
+          {
             name: "description",
             content:
               "GitTinder is a social networking and online developer meeting application/website that allows users to connect with similar minds",

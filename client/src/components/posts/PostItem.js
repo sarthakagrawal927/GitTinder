@@ -6,8 +6,7 @@ import LazyLoad from "react-lazyload";
 import { connect } from "react-redux";
 
 import { addLike, removeLike, deletePost } from "../../actions/post";
-import female_image from "../../img/female.webp";
-import male_image from "../../img/male.webp";
+import unisex_image from "../../img/unisex.webp";
 const PostItem = ({
   addLike,
   removeLike,
@@ -22,7 +21,6 @@ const PostItem = ({
     comments,
     user,
     userDP,
-    userGender,
     likes,
     date,
   },
@@ -32,11 +30,7 @@ const PostItem = ({
     <div>
       <Link to={`/profile/${user}`}>
         <LazyLoad once='true'>
-          <img
-            className='round-img'
-            src={userDP || (userGender === "Male" ? male_image : female_image)}
-            alt='DP'
-          />
+          <img className='round-img' src={userDP || unisex_image} alt='DP' />
         </LazyLoad>
 
         <h4>{name}</h4>
