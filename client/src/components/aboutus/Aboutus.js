@@ -11,9 +11,7 @@ const aboutus = () => {
   return (
     <div className='aboutus'>
       <div className='row'>
-        <div
-          className='col-lg-6'
-          style={({ padding: "3rem" }, { alignSelf: "center" })}>
+        <div className='col-lg-6 head-desc'>
           <h2>
             Work in progress
             <Suspense fallback={<div>.</div>}>

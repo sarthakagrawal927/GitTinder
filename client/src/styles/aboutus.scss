@@ -75,11 +75,17 @@
   }
 }
 
-.git_logo {
-  height: 30vh;
-  width: 20vh;
-}
+@media (min-width: 701px) {
+  .git_logo {
+    height: 70vh;
+    width: 50vh;
+  }
 
+  .head-desc {
+    padding: 3rem !important;
+    align-self: center !important;
+  }
+}
 @media (max-width: 700px) {
   .git_logo {
     margin-top: 1rem;
