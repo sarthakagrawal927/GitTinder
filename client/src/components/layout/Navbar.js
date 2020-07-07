@@ -25,7 +25,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li>
         <Link className='nav-link' to='/leaderboard'>
-          Leaderboard
+          <i className='fas fa-flag'></i>{" "}
+          <span className='hide-sm'>Leaderboard</span>
         </Link>
       </li>
       <li>

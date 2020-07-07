@@ -12,7 +12,7 @@ const aboutus = () => {
     <div className='aboutus'>
       <div className='row'>
         <div
-          className='col-6'
+          className='col-lg-6'
           style={({ padding: "3rem" }, { alignSelf: "center" })}>
           <h2>
             Work in progress
@@ -33,14 +33,10 @@ const aboutus = () => {
 
           <h4>We are Recruiting right now !</h4>
         </div>
-        <div className='col-6' style={{ textAlign: "center" }}>
+        <div className='col-lg-6' style={{ textAlign: "center" }}>
           {" "}
           <LazyLoad once='true'>
-            <img
-              src={logo}
-              alt='gittinderlogo'
-              style={({ height: "30vh" }, { width: "20vw" })}
-            />
+            <img src={logo} alt='gittinderlogo' className='git_logo' />
           </LazyLoad>
         </div>
       </div>
