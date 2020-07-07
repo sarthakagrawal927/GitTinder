@@ -1,33 +1,34 @@
 /*Navbar*/
 
 .navbar-brand {
-    font-family: $heading-text;
-    font-size: 2.5rem;
-    font-weight: bold;
+  font-family: $heading-text;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.7rem 2rem;
-    z-index: 1;
-    width: 100%;
-    top: 0;
-    border-bottom: solid 1px $primary-color;
-    opacity: 0.9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px $primary-color;
+  opacity: 0.9;
 }
 
 .navbar ul {
-    display: flex;
+  display: flex;
+  font-weight: 500;
 }
 
 .navbar a {
-    color: $primary-color;
-    padding: 0.45rem;
-    margin: 0 0.25rem;
+  color: $primary-color;
+  padding: 0.45rem;
+  margin: 0 0.25rem;
 }
 
 .navbar .welcome span {
-    margin-right: 0.6rem;
+  margin-right: 0.6rem;
 }

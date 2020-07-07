@@ -1,5 +1,6 @@
 import React from "react";
-
+import LazyLoad from "react-lazyload";
+import Desc from "../../img/desc.webp";
 const AboutSH = () => (
   <React.Fragment>
     <h2>SignificantHobbies - The Parent Company</h2>
@@ -29,6 +30,11 @@ const AboutSH = () => (
         </p>
       </div>
     </div>
+    <h2>More on Future Projects</h2>
+    <br />
+    <LazyLoad once='true'>
+      <img src={Desc} alt='Description' />
+    </LazyLoad>
   </React.Fragment>
 );
 

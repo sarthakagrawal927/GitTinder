@@ -12,8 +12,8 @@ const Features = () => (
           <div className='card-body'>
             <p>Global Chat</p>
             <p>Bot as Guide</p>
-            <p>Neural Network Recommender</p>
-            <p>Team-Management Features</p>
+            <p>CNN Recommender</p>
+            <p>Poll Creation</p>
           </div>
         </div>
       </div>
@@ -33,12 +33,12 @@ const Features = () => (
       <div className='features-column col-lg-6 col-md-6'>
         <div className='card'>
           <div className='card-header'>
-            <h3>FlashSurvey</h3>
+            <h3>CollegePedia</h3>
           </div>
           <div className='card-body'>
-            <p>Google Form RipOff</p>
-            <p>Stylable</p>
-            <p>Mailer Integration</p>
+            <p>Social Media</p>
+            <p>If College Clubs</p>
+            <p>Were a Person</p>
           </div>
         </div>
       </div>

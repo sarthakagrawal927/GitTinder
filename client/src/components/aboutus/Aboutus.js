@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from "react";
-import { Link } from "react-router-dom";
 
 const Emoji = lazy(() => import("../layout/Emoji"));
 const Footer = lazy(() => import("./Footer"));
@@ -39,11 +38,6 @@ const aboutus = () => {
         </Suspense>
         <Suspense fallback={<div>Loading...</div>}>
           <AboutSH />
-          <br />
-          <h4>
-            For more information we have a{" "}
-            <Link to='/conversationform'>Small Chat Bot</Link>
-          </h4>
         </Suspense>
       </section>
 

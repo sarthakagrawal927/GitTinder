@@ -17,7 +17,6 @@ import NotFound from "../layout/NotFound";
 import PrivateRoute from "../routing/PrivateRoute";
 import AboutUs from "../aboutus/Aboutus";
 import Leaderboard from "../profiles/Leaderboard";
-import ConversationForm from "../aboutus/ConversationForm";
 
 const Routes = (props) => {
   return (
@@ -28,7 +27,6 @@ const Routes = (props) => {
         <Route exact path='/login' component={Login} />
         <Route exact path='/aboutus' component={AboutUs} />
         <Route exact path='/leaderboard' component={Leaderboard} />
-        <Route exact path='/conversationform' component={ConversationForm} />
 
         <PrivateRoute exact path='/profile/:id' component={Profile} />
         <PrivateRoute exact path='/profiles' component={Profiles} />
