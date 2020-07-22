@@ -10,3 +10,4 @@ client/build
 /routes/poll.js
 /models/Blog.js
 /models/Poll.js
+/routes/confirmEmail.js

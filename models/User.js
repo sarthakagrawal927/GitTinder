@@ -14,6 +14,14 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // confirmed: {
+  //   type: Boolean,
+  //   required: true,
+  //   default: false,
+  // },
+  // hash: {
+  //   type: String,
+  // },
   date: {
     type: Date,
     default: Date.now,

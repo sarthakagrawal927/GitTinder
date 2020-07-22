@@ -3,18 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-
+import Categories from "./categories";
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
-  const Categories = [
-    { category: "All", Link: "/posts" },
-    { category: "Web Development", Link: "/posts/categories/web-development" },
-    {
-      category: "Mobile Software Dev",
-      Link: "/posts/categories/mobile-development",
-    },
-    { category: "Development", Link: "/posts/categories/development" },
-  ];
-
   const authLinks = Categories.map((topic) => (
     <li key={topic.category}>
       <Link className='nav-link' to={topic.Link}>

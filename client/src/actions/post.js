@@ -32,11 +32,7 @@ export const getPosts = () => async (dispatch) => {
 // Get posts by Category
 export const getPostsByCategory = (category) => async (dispatch) => {
   try {
-    console.log("inside action");
     const res = await api.get(`/posts/categories/${category}`);
-
-    console.log(res.data);
-
     dispatch({
       type: GET_POSTS_BY_CATEGORY,
       payload: { category, posts: res.data },

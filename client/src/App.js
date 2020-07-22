@@ -13,6 +13,14 @@ import setAuthToken from "./utils/setAuthToken";
 import "./App.scss";
 import { Helmet } from "react-helmet";
 
+import TagManager from "react-gtm-module";
+
+const tagManagerArgs = {
+  gtmId: "GTM-PTMC9RW",
+};
+
+TagManager.initialize(tagManagerArgs);
+
 const App = () => {
   useEffect(() => {
     setAuthToken(localStorage.token);

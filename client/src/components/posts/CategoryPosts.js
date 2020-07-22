@@ -1,43 +1,48 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, lazy, Suspense } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { getPostsByCategory } from "../../actions/post";
-import { lazy } from "react";
 
-//const PostItem = loadable(() => import("./PostItem"));
+const PostItem = lazy(() => import("./PostItem"));
 const CategoryNavbar = lazy(() => import("../layout/CategoryNavbar"));
 
-const Posts = ({ getPostsByCategory, post: posts }) => {
+const CategoryPosts = ({
+  getPostsByCategory,
+  post: posts,
+  categoryName: category,
+}) => {
   useEffect(() => {
     getPostsByCategory();
   }, [getPostsByCategory]);
 
-  console.log("inside component");
-
   return (
     <Fragment>
-      <h1 className='large text-primary'>Posts</h1>
+      <h1 className='large text-primary'>{category} Posts</h1>
 
-      <CategoryNavbar />
-      <div className='posts'>
-        {/* {posts.map((post) => (
-          <PostItem key={post._id} post={post} />
-        ))} */}
-      </div>
+      <Suspense fallback={<div>Loading....</div>}>
+        <CategoryNavbar />
+        <div className='posts'>
+          {posts.map((post) => (
+            <PostItem key={post._id} post={post} />
+          ))}
+        </div>
+      </Suspense>
     </Fragment>
   );
 };
 
-Posts.propTypes = {
+CategoryPosts.propTypes = {
   getPostsByCategory: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired,
   category: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  post: state.post,
   category: state.category,
 });
 
 export default connect(mapStateToProps, { getPostsByCategory })(
-  React.memo(Posts),
+  React.memo(CategoryPosts),
 );

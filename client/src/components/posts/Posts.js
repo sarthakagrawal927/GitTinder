@@ -6,7 +6,7 @@ import { getPosts } from "../../actions/post";
 
 const PostItem = lazy(() => import("./PostItem"));
 const PostForm = lazy(() => import("./PostForm"));
-// const CategoryNavbar = lazy(() => import("../layout/CategoryNavbar"));
+const CategoryNavbar = lazy(() => import("../layout/CategoryNavbar"));
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
     getPosts();
@@ -20,7 +20,7 @@ const Posts = ({ getPosts, post: { posts } }) => {
       </p>
       <Suspense fallback={<div>Loading....</div>}>
         <PostForm />
-        {/* <CategoryNavbar /> */}
+        <CategoryNavbar />
 
         <div className='posts'>
           {posts.map((post) => (

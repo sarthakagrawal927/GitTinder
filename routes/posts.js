@@ -39,7 +39,6 @@ router.get("/categories/:category", async (req, res) => {
     const posts = await Post.find({ category: req.params.category }).sort({
       date: -1,
     });
-    console.log("inside backend");
     console.log(req.params.category);
     console.log(posts);
     res.json(posts);

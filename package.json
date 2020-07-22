@@ -34,9 +34,11 @@
         "multer": "^1.4.0",
         "multer-s3": "^2.7.0",
         "node-sass": "^4.14.1",
+        "nodemailer": "^6.4.10",
         "normalize-url": "^5.0.0",
         "path": "^0.12.7",
-        "prop-types": "^15.7.2"
+        "prop-types": "^15.7.2",
+        "react-gtm-module": "^2.0.10"
     },
     "devDependencies": {
         "concurrently": "^5.2.0",
