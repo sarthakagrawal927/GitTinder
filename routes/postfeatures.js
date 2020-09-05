@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
-
+const { check, validationResult } = require("express-validator");
 const Post = require("../models/Post");
 const Profile = require("../models/Profile");
 const checkObjectId = require("../middleware/checkObjectId");
@@ -34,6 +34,44 @@ router.delete("/:id", [auth, checkObjectId("id")], async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+// @route    Edit api/posts/:id
+// @desc     Edit a post
+// @access   Private
+router.patch(
+  "/:id",
+  [auth, checkObjectId("id")],
+  [check("text", "Text is required").not().isEmpty()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const post = await Post.findById(req.params.id);
+
+      // Check user
+      if (post.user.toString() !== req.user.id) {
+        return res.status(401).json({ msg: "User not authorized" });
+      }
+
+      post.text = req.body.text;
+      post.name = user.name;
+      post.user = req.user.id;
+      post.userDP = profile.displayPictureURL;
+      post.imageURL = req.body.imageURL;
+      post.category = req.body.category;
+
+      await post.save();
+
+      res.json({ msg: "Post Edited" });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  },
+);
 
 // @route    PUT api/posts/like/:id
 // @desc     Like a post
