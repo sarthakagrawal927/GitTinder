@@ -1,5 +1,8 @@
 # GitTinder
 
+![AI Generated](https://ai-percentage-pin.vercel.app/api/ai-percentage?value=25)
+![AI PRs Welcome](https://ai-percentage-pin.vercel.app/api/ai-prs?welcome=yes)
+
 GitTinder is a developer-focused social platform built on the MERN stack. It supports auth, profiles, posts, comments, likes, leaderboard ranking, and image uploads to S3.
 
 ## Features
